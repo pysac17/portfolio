@@ -8,6 +8,7 @@ import objectDetectionRobot from './objectDetectionRobot.jpg'
 import unscript from './unscript.png'
 import yoga from './yoga.png'
 import techxleIcon from './techxleIcon.png'
+import netflix from './netflix.png'
 
 export {
     attendanceTracker,
@@ -19,5 +20,6 @@ export {
     objectDetectionRobot,
     unscript,
     yoga,
-    techxleIcon
+    techxleIcon,
+    netflix
 }

@@ -33,6 +33,7 @@ import {
     objectDetectionRobot,
     unscript,
     yoga,
+    netflix,
     techxleIcon,
 } from "../assets/images";
 
@@ -252,5 +253,12 @@ export const projects = [
         name: 'Object Detection and Avoidance Robot',
         description: 'Developed a sophisticated robot with obstacle detection and avoidance capabilities, equipped with sensors to "see" its surroundings and navigate through complex environments using Arduino IDE.',
         link: 'https://github.com/pysac17/arduino-projects',
+    },
+    {
+        iconUrl: netflix,
+        theme: 'btn-back-black',
+        name: 'Netflix Clone',
+        description: 'Developed a Netflix clone using ReactJs and the main is to use various api in application',
+        link: 'https://netflix-clone-beta-one-84.vercel.app/',
     }
 ];
