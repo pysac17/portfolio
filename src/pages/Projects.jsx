@@ -21,11 +21,11 @@ const Projects = () => {
             <div className='block-container w-12 h-12'>
               <div className={`btn-back rounded-xl ${project.theme}`} />
               <div className='btn-front rounded-xl flex justify-center items-center'>
-                {/* <img
+                <img
                   src={project.iconUrl}
-                  alt='threads'
-                  className='w-50 h-50 object-contain'
-                /> */}
+                  alt={project.name}
+                  className='w-3/4 h-3/4 object-contain'
+                />
               </div>
             </div>
 

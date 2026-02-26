@@ -27,6 +27,24 @@ const Contact = () => {
     setLoading(true);
     setCurrentAnimation("hit");
 
+    // Check if environment variables are set
+    if (!import.meta.env.VITE_APP_EMAILJS_SERVICE_ID || 
+        !import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID || 
+        !import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY) {
+      setLoading(false);
+      setCurrentAnimation("idle");
+      showAlert({
+        show: true,
+        text: "Email service is not configured. Please check environment variables.",
+        type: "danger",
+      });
+      console.error("Missing EmailJS environment variables:");
+      console.error("VITE_APP_EMAILJS_SERVICE_ID:", import.meta.env.VITE_APP_EMAILJS_SERVICE_ID);
+      console.error("VITE_APP_EMAILJS_TEMPLATE_ID:", import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID);
+      console.error("VITE_APP_EMAILJS_PUBLIC_KEY:", import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY);
+      return;
+    }
+
     emailjs
       .send(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
@@ -63,7 +81,7 @@ const Contact = () => {
         },
         (error) => {
           setLoading(false);
-          console.error(error);
+          console.error("EmailJS error:", error);
           setCurrentAnimation("idle");
 
           showAlert({

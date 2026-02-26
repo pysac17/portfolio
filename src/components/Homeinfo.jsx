@@ -6,10 +6,10 @@ const Homeinfo = ({ currentStage }) => {
     return (
       <h1 className='sm:text-xl sm:leading-snug text-center neo-brutalism-blue py-4 px-8 text-white mx-5'>
         Hi, I'm
-        <span className='font-semibold mx-2 text-white'>Sachi</span>
+        <span className='font-semibold mx-2 text-white'>Sachi </span>
         👋
         <br />
-        Unlocking the future with AI/ML innovations from India 🚀
+        MS CS @ UC Irvine · AI Engineer · Patent Holder 🚀
       </h1>
     );
 
@@ -17,11 +17,11 @@ const Homeinfo = ({ currentStage }) => {
     return (
       <div className='info-box'>
         <p className='font-medium sm:text-xl text-center'>
-          Worked at several prestigious companies <br /> honing a diverse range of skills along the way
+          From founding an AI department at a startup <br /> to shipping LLM pipelines for enterprise clients 🏢
         </p>
 
         <Link to='/about' className='neo-brutalism-white neo-btn'>
-          Learn more
+          My Journey
         </Link>
       </div>
     );
@@ -31,11 +31,11 @@ const Homeinfo = ({ currentStage }) => {
     return (
       <div className='info-box'>
         <p className='font-medium text-center sm:text-xl'>
-          Led multiple projects to success over the years. <br /> Curious about the results?
+          EEG classifiers, contrail detectors, patented pose systems <br /> and everything in between 🧠
         </p>
 
         <Link to='/projects' className='neo-brutalism-white neo-btn'>
-          Visit my portfolio
+          See my work
         </Link>
       </div>
     );
@@ -45,11 +45,11 @@ const Homeinfo = ({ currentStage }) => {
     return (
       <div className='info-box'>
         <p className='font-medium sm:text-xl text-center'>
-          Looking to enhance your team with AI/ML expertise? <br/>
+          Open to AI/ML roles for Summer/Fall 2026 <br /> Let's build something that actually works 🤝
         </p>
 
         <Link to='/contact' className='neo-brutalism-white neo-btn'>
-          Let's talk
+          Get in touch
         </Link>
       </div>
     );

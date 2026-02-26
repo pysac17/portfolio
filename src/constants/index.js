@@ -21,6 +21,9 @@ import {
     mongodb,
     react,
     sass,
+    pytorch,
+    opencv,
+    langchain,
 } from "../assets/icons";
 
 import {
@@ -35,6 +38,7 @@ import {
     yoga,
     netflix,
     techxleIcon,
+    brainwave,
 } from "../assets/images";
 
 export const skills = [
@@ -47,6 +51,21 @@ export const skills = [
         imageUrl: tensorflow,
         name: "TensorFlow",
         type: "AI/ML",
+    },
+    { 
+        imageUrl: pytorch, 
+        name: "PyTorch", 
+        type: "AI/ML" 
+    },
+    { 
+        imageUrl: opencv, 
+        name: "OpenCV", 
+        type: "AI/ML" 
+    },
+    { 
+        imageUrl: langchain, 
+        name: "LangGraph", 
+        type: "AI/ML" 
     },
     {
         imageUrl: javascript,
@@ -141,45 +160,41 @@ export const skills = [
 ];
 
 export const experiences = [
-        {
-        title: "Computer Analyst",
+    {
+        title: "Associate AI Engineer",
         company_name: "Techxle",
-        location: "Chennai",
-        icon: techxleIcon,  
-        iconBg: "black",  
-        date: "July 2024 - Present",
+        location: "Mumbai (Remote)",
+        icon: techxleIcon,
+        iconBg: "black",
+        date: "August 2024 - August 2025",
         points: [
-            "Lead the development and optimization of AI systems, including RAG models, mind maps, and blood cell classification tools.",
-            "Mentor interns by guiding them through hands-on projects, fostering skill development in machine learning and AI.",
-            "Collaborate cross-functionally to create AI solutions that enhance product offerings, improving efficiency and user experience.",
+            "Built enterprise document processing pipelines using LangGraph and LangSmith for clients Lockton and TRNDigital, converting unstructured insurance binder and quote documents into structured JSON, delivering the full solution within 2 weeks in a 4-person team.",
+            "Engineered a resume screening engine using Azure Document Intelligence, Azure Search AI, and GPT-based re-ranking, automating candidate evaluation and reducing manual HR screening effort across hiring pipelines.",
+            "Mentored two interns in NLP and computer vision by designing structured learning paths and leading weekly project reviews, enabling both to independently contribute to live production projects.",
         ],
     },
     {
-        title: "AI/DS Intern",
+        title: "AI & DS Intern",
         company_name: "The Hobby Tribe",
-        location: "Worli",
+        location: "Mumbai",
         icon: hobbyTribeIcon,
         iconBg: "#FFA500",
         date: "June 2023 - August 2023",
         points: [
-            "Pioneered the AI department as the inaugural AI intern at The Hobby Tribe, crafting 4.5 impactful AI models, including a revolutionary music classification system and image comparison models.",
-            "Automated the evaluation process for learning hobbies, introducing a comprehensive system that assessed students' proficiency and provided targeted feedback, enhancing the overall learning experience.",
-            "Collaborated with cross-functional teams to integrate AI solutions into existing systems, improving operational efficiency.",
-            "Conducted extensive research on machine learning algorithms to optimize model performance and accuracy.",
+            "Founded the AI department from scratch as the sole AI hire, scoping and delivering music classification, image comparison, and automated student assessment models using CNNs and NLP for a hobby learning platform.",
+            "Reduced instructor workload through automated assessment pipelines while improving user personalization, enabling scalable self-paced learning across the platform.",
         ],
     },
     {
-        title: "AI/ML Intern",
+        title: "AI & ML Intern",
         company_name: "Gainn Fintech",
-        location: "Andheri",
+        location: "Mumbai",
         icon: gainnFintechIcon,
         iconBg: "#62cff4",
         date: "January 2023 - March 2023",
         points: [
-            "Engineered an advanced bidirectional LSTM model at Gain Fintech, seamlessly blending time series data analysis with diverse feature incorporation to achieve accurate future stock price predictions.",
-            "Developed algorithms to preprocess and analyze stock market data, improving the accuracy of predictions.",
-            "Conducted research on various external factors impacting stock prices and integrated these factors into the model.",
-            "Collaborated with team members to interpret model results and provided insights to enhance investment strategies.",
+            "Engineered a stock price prediction system using a bidirectional LSTM model with integrated time series and social media data analysis, achieving 73% prediction accuracy.",
+            "Improved investment decision-making by surfacing data-driven insights from blended market and sentiment signals.",
         ],
     },
 ];
@@ -206,59 +221,66 @@ export const socialLinks = [
 
 export const projects = [
     {
+        iconUrl: brainwave, 
+        theme: 'btn-back-purple',
+        name: 'Brainwave-Based Adaptive Learning System',
+        description: 'Built a real-time EEG cognitive state classifier using the Muse headband, achieving 98% training accuracy across focus, neutral, and relaxed states. Fused biosignal data with user questionnaire responses into a multimodal recommendation engine that generates personalized study plans — covering session length, ambient conditions, and peak productivity windows.',
+        link: 'https://github.com/areebar-netizen/MCS_Capstone', 
+    },
+    {
         iconUrl: yoga,
         theme: 'btn-back-blue',
         name: 'Live Yoga Posture Detection System',
-        description: 'Developed an AI-powered digital yoga assist system using deep learning techniques to detect, analyze, and guide users on proper yoga postures for ten different yoga poses. Implemented a machine learning engine integrating CNN and PoseNet technologies to provide personalized pose recommendations for targeted health issues, enhancing mobility and alleviating discomfort. Achieved an A grade and published a patent (application number: 202321077089).',
+        description: 'Built a real-time yoga posture correction system using CNNs and MediaPipe, classifying 10 poses with 80–90% detection confidence trained over 1600 epochs. Engineered a custom dataset and solved a critical failure for low-angle poses like plank where the face falls below knee level. Secured a national patent (application no. 202321077089) for the novel pose detection methodology.',
         link: 'https://github.com/pysac17/YogaGuru',
     },
     {
         iconUrl: contrailDetection,
         theme: 'btn-back-red',
         name: 'Contrail Detection',
-        description: 'Engineered a cutting-edge Machine Learning model to identify and mitigate contrail production, thereby reducing the impact of global warming caused by airplanes. Experimented with various algorithms to develop a novel approach for contrail detection, incorporating advanced data processing techniques.',
+        description: 'Benchmarked MaxViT, EfficientNet, and CoAtNet for satellite contrail detection via grid-search hyperparameter tuning across learning rates, batch sizes, and weight decay on single and multi-frame setups. Identified MaxViT as the optimal architecture at 72.4% accuracy, outperforming EfficientNet (69.8%) and CoAtNet (62.0%).',
         link: 'https://github.com/pysac17/contrails-detection',
     },
     {
         iconUrl: unscript,
         theme: 'btn-back-green',
-        name: 'Unscript, AIML Hackathon Project',
-        description: 'Developed an image classifier using OCR (Optical Character Recognition) technology to categorize images into three quality categories: poor, moderate, and excellent. Secured a runner-up position in the hackathon. Implemented additional features such as bulk file upload and text recognition for images of moderate or excellent quality.',
+        name: 'Unscript Hackathon — Runner Up',
+        description: 'Built an OCR-based image quality classifier that categorized images into poor, moderate, and excellent quality tiers. Added bulk file upload and text extraction for moderate and excellent quality images. Secured runner-up at the Unscript AIML Hackathon 2023.',
         link: 'https://github.com/GlenR16/CtrlAlt-Elite_Unscript-2k23',
     },
     {
         iconUrl: attendanceTracker,
         theme: 'btn-back-pink',
-        name: 'Attendance Tracker',
-        description: 'Designed a Django-based progress-tracking app for teachers, students, and parents to easily access students\' academic reports, timetables, and extracurricular activities, enhancing educational engagement and management.',
+        name: 'Attendance & Extracurricular Tracker',
+        description: 'Built a full-stack Django school management app for teachers, students, and parents to track academic reports, timetables, and extracurricular activities — demonstrating end-to-end backend development and relational data modeling.',
         link: 'https://github.com/pysac17/codeDiggers/',
     },
     {
         iconUrl: inventoryManagement,
         theme: 'btn-back-yellow',
         name: 'Inventory Management System',
-        description: 'Inventory Management System for Restaurants and Retail Stores. Developed to help businesses track sales, inventory, and manage customers in real time.',
+        description: 'Developed a full-stack inventory and sales tracking system for restaurants and retail stores with real-time dashboards, dynamic graphs, order invoices, and monthly summaries — built to give management instant visibility into stock and revenue.',
         link: 'https://github.com/Elvis-Dodti/pos_mms',
     },
     {
         iconUrl: lineFollowingRobot,
         theme: 'btn-back-orange',
-        name: 'Line Following Robot',
-        description: 'Engineered a line-following robot using Arduino IDE that autonomously navigates various paths, such as straight lines, zigzags, and circles, demonstrating advanced robotics and sensor integration.',
+        name: 'Autonomous Line Following Robot',
+        description: 'Designed and built a line-following robot using Arduino IDE and sensor fusion, capable of autonomously navigating straight lines, zigzags, and circular paths. Competed in IIT Bombay\'s e-Yantra Robotics Competition (EYRC) — the project that sparked my interest in intelligent systems.',
         link: 'https://github.com/pysac17/arduino-projects',
     },
     {
         iconUrl: objectDetectionRobot,
         theme: 'btn-back-black',
-        name: 'Object Detection and Avoidance Robot',
-        description: 'Developed a sophisticated robot with obstacle detection and avoidance capabilities, equipped with sensors to "see" its surroundings and navigate through complex environments using Arduino IDE.',
+        name: 'Obstacle Detection & Avoidance Robot',
+        description: 'Built an autonomous robot using Arduino IDE and proximity sensors to detect and navigate around obstacles in real time — an early hands-on project in sensor integration and real-time decision logic.',
         link: 'https://github.com/pysac17/arduino-projects',
     },
     {
         iconUrl: netflix,
-        theme: 'btn-back-black',
+        theme: 'btn-back-teal',
         name: 'Netflix Clone',
-        description: 'Developed a Netflix clone using ReactJs and the main is to use various api in application',
+        description: 'Built a fully functional Netflix-style streaming UI using ReactJS and the TMDB API — featuring dynamic movie listings, search, and responsive design. A frontend deep-dive into component architecture and REST API integration.',
         link: 'https://netflix-clone-beta-one-84.vercel.app/',
-    }
+    },
 ];

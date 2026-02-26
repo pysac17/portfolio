@@ -22,6 +22,9 @@ import blender from './blender.png'
 import canva from './canva.jpg'
 import threejs from './threejs.png'
 import arduino from './arduino.png'
+import pytorch from './pytorch.png'
+import opencv from './opencv.png'
+import langchain from './langchain.svg'
 
 export {
     sql,
@@ -48,4 +51,7 @@ export {
     twitter,
     arrow,
     contact,
+    pytorch,
+    opencv,
+    langchain,
 }

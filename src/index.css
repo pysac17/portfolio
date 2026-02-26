@@ -63,7 +63,7 @@ body:has(.card[data-color="green"]:hover) {
     }
 
     .info-box {
-        @apply mx-5 relative flex text-white flex-col gap-3 max-w-2xl neo-brutalism-blue pt-4 pb-12 px-8;
+        @apply mx-5 relative flex text-white flex-col gap-3 max-w-2xl bg-blue-600 pt-4 pb-12 px-8 rounded-lg;
     }
 
     .neo-btn {
@@ -136,6 +136,14 @@ body:has(.card[data-color="green"]:hover) {
 
 .block-container .btn-back-pink {
     background: linear-gradient(135deg, #e81cff -20%, #40c9ff 120%);
+}
+
+.block-container .btn-back-purple {
+    background: linear-gradient(135deg, #8b5cf6 -20%, #d946ef 120%);
+}
+
+.block-container .btn-back-teal {
+    background: linear-gradient(135deg, #14b8a6 -20%, #06b6d4 120%);
 }
 
 .block-container .btn-back-black {

@@ -12,7 +12,12 @@ const About = () => {
       </h1>
 
       <div className="mt-5 flex flex-col gap-3 text-slate-900">
-        <p>Passionate AI innovator and award-winning technologist, pioneering breakthroughs in healthcare, environmental sustainability, and human well-being through creative and impactful solutions.</p>
+        <p>
+          I'm a CS grad student at UC Irvine and a former AI Engineer who loves 
+          building things that actually work — from LLM pipelines used by real 
+          clients to a yoga pose detector that earned a national patent. I care 
+          about making AI useful, not just impressive.
+        </p>      
       </div>
 
       <div className='py-10 flex flex-col'>
@@ -38,7 +43,11 @@ const About = () => {
       <div className='py-16'>
         <h3 className='subhead-text'>Work Experience</h3>
         <div className="mt-5 flex flex-col gap-3 text-slate-900">
-        <p>I have collaborated with diverse teams, advancing my expertise in AI and software development while pioneering innovative solutions that blend creativity with technical rigor. This experience has equipped me to leverage cutting-edge technologies effectively, ensuring impactful contributions to projects.</p>
+        <p>
+          Here's where I've put the work in — from founding the AI department 
+          at a startup to shipping enterprise-grade NLP pipelines for 
+          insurance clients.
+        </p>       
         </div>
 
 

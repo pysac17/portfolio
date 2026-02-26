@@ -9,6 +9,7 @@ import unscript from './unscript.png'
 import yoga from './yoga.png'
 import techxleIcon from './techxleIcon.png'
 import netflix from './netflix.png'
+import brainwave from './brainwave.jpg'
 
 export {
     attendanceTracker,
@@ -21,5 +22,6 @@ export {
     unscript,
     yoga,
     techxleIcon,
-    netflix
+    netflix,
+    brainwave,
 }
