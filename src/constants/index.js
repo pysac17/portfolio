@@ -102,12 +102,27 @@ export const skills = [
 
 export const experiences = [
     {
+        title: "Masters in Computer Science",
+        company_name: "University of California, Irvine",
+        location: "Irvine, CA",
+        icon: "🎓",
+        iconBg: "#3B82F6",
+        date: "September 2025 – December 2026",
+        type: "education",
+        points: [
+            "Graduate studies in Computer Science with focus on AI/ML systems",
+            "Advanced coursework in machine learning, distributed systems, and software engineering",
+            "Research in production AI systems deployment",
+        ],
+    },
+    {
         title: "Associate AI Engineer",
         company_name: "Techxle",
         location: "Mumbai (Remote)",
         icon: techxleIcon,
         iconBg: "black",
-        date: "August 2024 - August 2025",
+        date: "August 2024 – August 2025",
+        type: "work",
         points: [
             "GenAI Document Pipelines: Architected production-grade RAG pipelines using LangGraph and LangSmith to transform unstructured insurance binders into structured JSON. Delivered a client-ready solution for Lockton/TRNDigital in 2 weeks, slashing processing time from hours to seconds.",
             "Intelligent Talent Acquisition: Engineered a resume screening engine leveraging Azure AI Search and GPT-based re-ranking. Optimized candidate-to-role matching precision and reduced manual HR screening effort by 80%.",
@@ -120,7 +135,8 @@ export const experiences = [
         location: "Mumbai",
         icon: hobbyTribeIcon,
         iconBg: "#FFA500",
-        date: "June 2023 - August 2023",
+        date: "June 2023 – August 2023",
+        type: "work",
         points: [
             "Department Foundation: Pioneered the AI department as the inaugural hire, establishing the technical roadmap for automated hobby assessment.",
             "Automated Evaluation: Developed CNN-based image comparison and NLP models that automated 60% of manual grading tasks, significantly reducing instructor overhead.",
@@ -133,7 +149,8 @@ export const experiences = [
         location: "Mumbai",
         icon: gainnFintechIcon,
         iconBg: "#62cff4",
-        date: "January 2023 - April 2023",
+        date: "January 2023 – April 2023",
+        type: "work",
         points: [
             "Predictive Analytics: Developed a high-performance forecasting system using Bidirectional LSTMs, achieving 73% directional accuracy in stock movement prediction.",
             "Data Pipeline Optimization: Engineered real-time predictive pipelines that fused sentiment analysis with time-series data to improve investment decision-making.",
@@ -141,15 +158,48 @@ export const experiences = [
         ],
     },
     {
+        title: "B.E. in AI & Data Science",
+        company_name: "Father Agnel College of Engineering",
+        location: "Mumbai",
+        icon: "🎓",
+        iconBg: "#3B82F6",
+        date: "January 2020 – August 2024",
+        type: "education",
+        points: [
+            "Bachelor's degree with Computer Vision patent achievement",
+            "Graduated with distinction in AI & Data Science",
+            "Secured national patent for computer vision innovation in medical imaging diagnostics",
+        ],
+    },
+    {
         title: "Technical Team Member",
         company_name: "Project Cell CRCE",
         icon: projectCell,
         iconBg: "#00979C",
-        date: "June 2021 - December 2021",
+        date: "June 2021 – December 2021",
+        type: "work",
         points: [
             "Autonomous Robotics: Designed and built Arduino-based robots using sensor fusion and real-time navigation algorithms to navigate complex environments without human input.",
             "National Competition: Competed in IIT Bombay's e-Yantra Robotics Competition (EYRC), gaining hands-on experience in hardware-software integration and algorithm development.",
             "Foundation of Expertise: This role established the core problem-solving and embedded systems skills that later shaped my career in Computer Vision and AI.",
+        ],
+    },
+    {
+        title: "Shree Arihant Krupa Foundation",
+        company_name: "Non-Profit Organization",
+        location: "Mumbai",
+        icon: "❤️",
+        iconBg: "#F59E0B",
+        date: "January 2020 – Present",
+        type: "ngo",
+        points: [
+            "Grew up in an environment that taught me to put others before me",
+            "Healthcare Infrastructure: Beyond meal drives, we provide critical medical equipment to hospitals and directly fund life-saving procedures for families in financial distress",
+            "Educational Equity: We provide comprehensive financial aid for children's tuition and supplies, ensuring that financial barriers do not prevent access to schooling",
+            "Animal Welfare: Actively engaged in animal safety and providing professional veterinary services to strays and local shelters",
+            "Elderly Care: Supporting senior citizens with home-cooked meals, companionship, and essential care services",
+            "Infrastructure Impact: Built 3 orphanages with educational facilities, established 5 Digital Centers in rural Zillas with 100+ computers, distributed 500+ cycles, 1000+ uniforms, and 2000+ books to underprivileged students",
+            "Philosophy: Emphasizing Jeevdaya (compassion for all living beings) and Anukampa (empathy) as core life principles",
         ],
     },
 ];

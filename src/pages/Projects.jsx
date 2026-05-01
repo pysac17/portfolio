@@ -60,7 +60,7 @@ const Projects = () => {
       </div>
 
       {/* Key Highlights */}
-      <div className='mb-6'>
+      <div className='mb-6 flex-grow'>
         <h4 className='text-sm font-semibold text-gray-700 mb-2'>Key Highlights:</h4>
         <ul className='space-y-1'>
           {project.impact.map((point, pointIndex) => (

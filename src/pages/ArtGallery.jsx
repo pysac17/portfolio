@@ -12,23 +12,16 @@ const Modal = ({ selectedPainting, setSelectedPainting }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center p-4"
+        className="fixed inset-0 bg-black bg-opacity-80 z-0 flex items-start justify-center p-4 pt-24"
         onClick={() => setSelectedPainting(null)}
       >
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.9, opacity: 0 }}
-          className="bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl my-8 relative"
+          className="bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl relative"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Close button positioned at top */}
-          <button
-            onClick={() => setSelectedPainting(null)}
-            className="absolute top-4 right-4 z-10 w-8 h-8 bg-gray-900 hover:bg-gray-800 text-white rounded-full flex items-center justify-center text-sm font-bold transition-all duration-200"
-          >
-            ×
-          </button>
           
           <div className="flex flex-col lg:flex-row h-full pt-8">
             {/* Image Section */}
@@ -201,7 +194,7 @@ const ArtGallery = () => {
                     src={painting.image} 
                     alt={painting.title}
                     className="w-full h-auto object-contain"
-                    style={{ maxHeight: '400px' }}
+                    style={{ maxHeight: '500px' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
                   
