@@ -5,7 +5,7 @@ import * as THREE from 'three'
 
 const SimpleOffice = ({ onClick, onHover, isHovered, ...props }) => {
     const officeRef = useRef();
-    const { scene } = useGLTF('src/assets/public/office.glb');
+    const { scene } = useGLTF('/office.glb');
 
     useFrame(() => {
         if (officeRef.current) {

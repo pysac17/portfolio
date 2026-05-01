@@ -6,7 +6,7 @@ import * as THREE from 'three';
 const SimpleBrain = ({ onClick, onHover, isHovered, ...props }) => {
     const brainRef = useRef();
     const lightRef = useRef();
-    const { scene } = useGLTF('src/assets/public/brain.glb');
+    const { scene } = useGLTF('/brain.glb');
     const timeRef = useRef(0);
 
     useFrame(({ clock }) => {

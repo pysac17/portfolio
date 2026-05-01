@@ -5,7 +5,7 @@ import * as THREE from 'three'
 
 const SimpleDome = ({ onClick, onHover, isHovered, ...props }) => {
     const domeRef = useRef();
-    const { scene } = useGLTF('src/assets/public/dome.glb');
+    const { scene } = useGLTF('/dome.glb');
 
     // Remove black circle/base from dome model
     useEffect(() => {

@@ -6,7 +6,7 @@ import * as THREE from 'three'
 const SimpleSolarProbe = ({ onClick, onHover, isHovered, ...props }) => {
     const probeRef = useRef();
     const timeRef = useRef(0);
-    const { scene } = useGLTF('src/assets/public/solarProbe.glb');
+    const { scene } = useGLTF('/solarProbe.glb');
 
     // Change materials to gray
     useEffect(() => {
