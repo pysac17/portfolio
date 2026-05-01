@@ -6,25 +6,9 @@ import * as THREE from 'three'
 const SimpleSolarProbe = ({ onClick, onHover, isHovered, ...props }) => {
     const probeRef = useRef();
     const timeRef = useRef(0);
-    const { scene } = useGLTF('/solarProbe.glb');
+    const { scene } = useGLTF('/robot.glb');
 
-    // Change materials to gray
-    useEffect(() => {
-        scene.traverse((child) => {
-            if (child.isMesh && child.material) {
-                if (Array.isArray(child.material)) {
-                    child.material.forEach(material => {
-                        if (material.color) {
-                            material.color.setHex(0x808080); // Gray color
-                        }
-                    });
-                } else if (child.material.color) {
-                    child.material.color.setHex(0x808080); // Gray color
-                }
-            }
-        });
-    }, [scene]);
-
+    
     useFrame(({ clock }) => {
         const time = clock.elapsedTime;
         timeRef.current = time;
@@ -59,8 +43,8 @@ const SimpleSolarProbe = ({ onClick, onHover, isHovered, ...props }) => {
             <primitive object={scene} scale={[2, 2, 2]} />
             {isHovered && (
                 <Html position={[0, 2, 0]} center>
-                    <div className="bg-black/80 text-cyan-400 px-3 py-1 rounded-lg font-mono text-sm border border-cyan-400/50 shadow-lg shadow-cyan-400/25">
-                        ACTIVE_MISSIONS: PROJECTS {'>>>'}
+                    <div className="bg-white/90 text-gray-800 px-3 py-1 rounded-lg font-sans text-sm border border-gray-200 shadow-lg">
+                        [CONTACT_ASSISTANT]
                     </div>
                 </Html>
             )}

@@ -25,7 +25,7 @@ const Projects = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
-      className='bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300'
+      className='bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 flex flex-col min-h-[500px]'
     >
       {/* Patent Badge */}
       {project.hasPatent && (
@@ -73,7 +73,7 @@ const Projects = () => {
       </div>
 
       {/* Action Buttons */}
-      <div className='flex gap-3'>
+      <div className='flex gap-3 mt-auto'>
         {project.liveLink && project.liveLink !== '#' && (
           <motion.a
             href={project.liveLink}
@@ -81,7 +81,7 @@ const Projects = () => {
             rel='noopener noreferrer'
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className='flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg text-center font-medium hover:bg-blue-700 transition-colors duration-200'
+            className='w-32 bg-blue-600 text-white px-4 py-2 rounded-lg text-center font-medium hover:bg-blue-700 transition-colors duration-200'
           >
             Live Demo
           </motion.a>

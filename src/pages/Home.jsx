@@ -1,7 +1,7 @@
-import HighTechNexus from './HighTechNexus'; 
+import CreativeDenHome from './CreativeDenHome'; 
 
 const Home = () => {
-  return <HighTechNexus />;
+  return <CreativeDenHome />;
 };
 
 export default Home;
