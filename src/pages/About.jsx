@@ -379,10 +379,7 @@ const About = () => {
 
       <div className='py-16'>
         <h3 className='subhead-text'>Experience & Education</h3>
-        <div className="mt-5 flex flex-col gap-3 text-slate-900">
-        <p>
-          A chronological journey through education, professional growth, and social impact.
-        </p>       
+        <div className="mt-5 flex flex-col gap-3 text-slate-900">      
         </div>
 
         {/* Two-Section Timeline Layout */}
@@ -551,9 +548,6 @@ const About = () => {
           
           {/* Section B: Detailed Milestone Cards */}
           <div className='space-y-6'>
-            <h3 className='text-xl font-semibold text-gray-800'>📋 Detailed Experience Timeline</h3>
-            <p className='text-sm text-gray-600'>Complete details of my professional journey, from most recent to earliest</p>
-            
             {/* Detailed Cards */}
             <div className='space-y-6'>
               {detailedCards.map((item, index) => (
