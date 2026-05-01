@@ -1,38 +1,112 @@
 import emailjs from "@emailjs/browser";
-import { Canvas } from "@react-three/fiber";
-import { Suspense, useRef, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Suspense, useRef, useState, useEffect } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
+import * as THREE from "three";
 
-import {Fox} from "../models/Fox";
 import useAlert from "../hooks/useAlert";
 import Alert from "../components/Alert";
 import Loader from "../components/Loader";
 
+// Interactive Robot Component
+const InteractiveRobot = ({ isTyping, ...props }) => {
+  const robotRef = useRef();
+  const { scene, animations } = useGLTF('src/assets/public/robot.glb');
+  const { actions } = useAnimations(animations, robotRef);
+  const previousAnimation = useRef();
+
+  useEffect(() => {
+    if (actions) {
+      const animationNames = Object.keys(actions);
+      console.log('Available animations:', animationNames);
+      console.log('Animation details:', animations.map(a => ({ name: a.name, duration: a.duration })));
+      console.log('isTyping:', isTyping);
+      
+      // Use the first available animation since there's only one
+      const availableAnimation = animationNames[0];
+      console.log('Using available animation:', availableAnimation);
+
+      if (actions[availableAnimation]) {
+        const currentAction = actions[availableAnimation];
+        console.log('Playing animation:', availableAnimation);
+        
+        // Stop all animations first
+        Object.values(actions).forEach(action => action.stop());
+        
+        // Play the animation only when typing
+        if (isTyping) {
+          currentAction.reset().fadeIn(0.5).play();
+        } else {
+          // When not typing, stop the animation completely
+          currentAction.stop();
+        }
+        
+        previousAnimation.current = currentAction;
+      }
+    }
+  }, [isTyping, actions, animations]);
+
+  useFrame(() => {
+    if (robotRef.current) {
+      // Always rotate, but faster when typing
+      const rotationSpeed = isTyping ? 0.02 : 0.01;
+      robotRef.current.rotation.y += rotationSpeed;
+    }
+  });
+
+  return (
+    <group ref={robotRef} {...props}>
+      <primitive object={scene} scale={[3, 3, 3]} />
+    </group>
+  );
+};
 
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const { alert, showAlert, hideAlert } = useAlert();
   const [loading, setLoading] = useState(false);
-  const [currentAnimation, setCurrentAnimation] = useState("idle");
+  const [isTyping, setIsTyping] = useState(false);
+  const typingTimeoutRef = useRef();
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (typingTimeoutRef.current) {
+        clearTimeout(typingTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleChange = ({ target: { name, value } }) => {
     setForm({ ...form, [name]: value });
+    setIsTyping(true);
+    if (typingTimeoutRef.current) {
+      clearTimeout(typingTimeoutRef.current);
+    }
+    typingTimeoutRef.current = setTimeout(() => {
+      setIsTyping(false);
+    }, 1500);
   };
 
-  const handleFocus = () => setCurrentAnimation("walk");
-  const handleBlur = () => setCurrentAnimation("idle");
+  const handleFocus = () => setIsTyping(true);
+  const handleBlur = () => {
+    typingTimeoutRef.current = setTimeout(() => {
+      setIsTyping(false);
+    }, 1500);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);
-    setCurrentAnimation("hit");
+    setIsTyping(false); // Stop typing animation during submit
 
     // Check if environment variables are set
     if (!import.meta.env.VITE_APP_EMAILJS_SERVICE_ID || 
         !import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID || 
         !import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY) {
       setLoading(false);
-      setCurrentAnimation("idle");
+      setIsTyping(false);
       showAlert({
         show: true,
         text: "Email service is not configured. Please check environment variables.",
@@ -71,7 +145,7 @@ const Contact = () => {
 
           setTimeout(() => {
             hideAlert(false);
-            setCurrentAnimation("idle");
+            setIsTyping(false);
             setForm({
               name: "",
               email: "",
@@ -82,7 +156,7 @@ const Contact = () => {
         (error) => {
           setLoading(false);
           console.error("EmailJS error:", error);
-          setCurrentAnimation("idle");
+          setIsTyping(false);
 
           showAlert({
             show: true,
@@ -159,31 +233,31 @@ const Contact = () => {
         </form>
       </div>
 
-      <div className='lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]'>
+      <div className='lg:w-1/2 w-full lg:h-auto md:h-[650px] h-[350px]'>
         <Canvas
           camera={{
-            position: [0, 0, 5],
-            fov: 75,
-            near: 0.1,
+            position: [0, 1, 20],
+            fov: 50,
+            near: 0.5,
             far: 1000,
           }}
         >
-          <directionalLight position={[0, 0, 1]} intensity={2.5} />
-          <ambientLight intensity={1} />
-          <pointLight position={[5, 10, 0]} intensity={2} />
+          <hemisphereLight skyColor={0x4040ff} groundColor={0x202020} intensity={0.8} />
+          <directionalLight position={[5, 5, 5]} intensity={1.5} />
+          <ambientLight intensity={0.6} />
+          <pointLight position={[0, 5, 0]} intensity={2} color="#00FFFF" />
           <spotLight
             position={[10, 10, 10]}
             angle={0.15}
             penumbra={1}
-            intensity={2}
+            intensity={3}
           />
 
           <Suspense fallback={<Loader />}>
-            <Fox
-              currentAnimation={currentAnimation}
-              position={[0.5, 0.35, 0]}
-              rotation={[12.629, -0.6, 0]}
-              scale={[0.5, 0.5, 0.5]}
+            <InteractiveRobot
+              isTyping={isTyping}
+              position={[0, -5.5, 0]}
+              rotation={[0, 0, 0]}
             />
           </Suspense>
         </Canvas>

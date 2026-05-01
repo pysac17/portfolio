@@ -1,27 +1,23 @@
-import attendanceTracker from './attendanceTracker.jpg'
-import contrailDetection from './contrailDetection.jpg'
+import boat from './boat.png'
+import durga from './durga.png'
 import gainnFintechIcon from './gainnFintechIcon.png'
 import hobbyTribeIcon from './hobbyTribeIcon.png'
-import inventoryManagement from './inventoryManagement.png'
-import lineFollowingRobot from './lineFollowingRobot.jpg'
-import objectDetectionRobot from './objectDetectionRobot.jpg'
-import unscript from './unscript.png'
-import yoga from './yoga.png'
+import krishna from './krishna.png'
+import lady from './lady.png'
+import lotus from './lotus.png'
+import projectCell from './projectCell.png'
 import techxleIcon from './techxleIcon.png'
-import netflix from './netflix.png'
-import brainwave from './brainwave.jpg'
+import wave from './wave.png'
 
 export {
-    attendanceTracker,
-    contrailDetection,
+    boat,
+    durga,
     gainnFintechIcon,
-    hobbyTribeIcon, 
-    inventoryManagement,
-    lineFollowingRobot,
-    objectDetectionRobot,
-    unscript,
-    yoga,
+    hobbyTribeIcon,
+    krishna,
+    lady,
+    lotus,
+    projectCell,
     techxleIcon,
-    netflix,
-    brainwave,
+    wave,
 }
