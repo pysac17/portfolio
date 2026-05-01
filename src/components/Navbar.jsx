@@ -7,7 +7,7 @@ const Navbar = () => {
   };
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] flex justify-between items-center px-12 py-6" style={{ backgroundColor: 'rgba(255, 255, 255, 0.4)', backdropFilter: 'blur(12px)' }}>
-      <NavLink to="/about" className="w-10 h-10 rounded-lg bg-white items-center justify-center flex font-bold shadow-md" onClick={handleNavClick}>
+      <NavLink to="/about" className="hidden md:flex w-10 h-10 rounded-lg bg-white items-center justify-center font-bold shadow-md" onClick={handleNavClick}>
         <p className="blue-gradient_text">
           SS
         </p>

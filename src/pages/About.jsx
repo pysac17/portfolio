@@ -607,9 +607,7 @@ const About = () => {
           </div>
           
           {/* Mobile: Only Detailed Cards */}
-          <div className='md:hidden space-y-6'>
-            <h3 className='text-xl font-semibold text-gray-800'>📋 Experience Timeline</h3>
-            
+          <div className='md:hidden space-y-6'>            
             {/* Mobile Detailed Cards */}
             <div className='space-y-6'>
               {detailedCards.map((item, index) => (
