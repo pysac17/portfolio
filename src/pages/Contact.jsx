@@ -11,7 +11,7 @@ import Loader from "../components/Loader";
 // Interactive Robot Component
 const InteractiveRobot = ({ isTyping, ...props }) => {
   const robotRef = useRef();
-  const { scene, animations } = useGLTF('src/assets/public/robot.glb');
+  const { scene, animations } = useGLTF('/robot.glb');
   const { actions } = useAnimations(animations, robotRef);
   const previousAnimation = useRef();
 
