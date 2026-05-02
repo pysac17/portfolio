@@ -8,7 +8,8 @@ export default defineConfig({
   server: {
     headers: {
       'Access-Control-Allow-Origin': '*',
-    }
+    },
+    historyApiFallback: true
   },
   build: {
     assetsInlineLimit: 0, // Don't inline large assets

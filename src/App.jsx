@@ -15,6 +15,7 @@ return (
                 <Route path='/projects' element={ <Projects /> } />
                 <Route path='/art' element={ <ArtGallery /> } />
                 <Route path='/contact' element={ <Contact /> } />
+                <Route path='*' element={ <About /> } />
             </Routes>
         </main>
     </Router>
