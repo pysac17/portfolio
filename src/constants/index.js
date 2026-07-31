@@ -39,9 +39,22 @@ import {
     wave,
 } from "../assets/images";
 
+export const skillLevelColors = {
+    Expert: { bg: "#10B981", text: "#FFFFFF", border: "#059669" },       
+    Advanced: { bg: "#3B82F6", text: "#FFFFFF", border: "#2563EB" },
+    Intermediate: { bg: "#94A3B8", text: "#FFFFFF", border: "#64748B" },
+};
+
 export const skills = [
     // --- 🧠 AI, MACHINE LEARNING & GEN AI ---
     { name: "LangGraph", type: "AI/ML", level: "Expert" },
+    { name: "Large Language Models (LLMs)", type: "AI/ML", level: "Expert" },
+    { name: "Agentic AI Systems", type: "AI/ML", level: "Advanced" },
+    { name: "Generative AI", type: "AI/ML", level: "Expert" },
+    { name: "Prompt Engineering", type: "AI/ML", level: "Advanced" },
+    { name: "LLM Evaluation & Testing", type: "AI/ML", level: "Advanced" },
+    { name: "Anthropic Claude API", type: "AI/ML", level: "Advanced" },
+    { name: "Groq", type: "AI/ML", level: "Intermediate" },
     { name: "LangSmith", type: "AI/ML", level: "Advanced" },
     { name: "RAG", type: "AI/ML", level: "Expert" },
     { name: "MediaPipe", type: "AI/ML", level: "Expert" },
@@ -62,6 +75,8 @@ export const skills = [
     { name: "Data Structures & Algorithms", type: "SDE", level: "Advanced" },
     { name: "Distributed Training", type: "SDE", level: "Advanced" },
     { name: "OOP", type: "SDE", level: "Advanced" },
+    { name: "CI/CD", type: "SDE", level: "Advanced" },
+    { name: "Automated Testing (pytest)", type: "SDE", level: "Advanced" },
     { name: "RocksDB", type: "SDE", level: "Intermediate" },
     { name: "RESTful APIs", type: "SDE", level: "Advanced" },
     { name: "DBMS", type: "SDE", level: "Advanced" },
@@ -70,9 +85,11 @@ export const skills = [
     { name: "Python", type: "Backend", level: "Expert" },
     { name: "Django", type: "Backend", level: "Advanced" },
     { name: "FastAPI", type: "Backend", level: "Advanced" },
+    { name: "Streamlit", type: "Backend", level: "Advanced" },
     { name: "Java", type: "Backend", level: "Advanced" },
     { name: "C++", type: "Backend", level: "Advanced" },
     { name: "SQL (MySQL)", type: "Backend", level: "Advanced" },
+    { name: "PostgreSQL", type: "Backend", level: "Advanced" },
     { name: "Celery", type: "Backend", level: "Advanced" },
     { name: "Flask", type: "Backend", level: "Intermediate" },
     { name: "Redis", type: "Backend", level: "Intermediate" },
@@ -102,12 +119,40 @@ export const skills = [
 
 export const experiences = [
     {
+        title: "Artificial Intelligence Intern",
+        company_name: "TechXL LLC",
+        location: "Remote",
+        icon: techxleIcon,
+        iconBg: "#6366F1",
+        date: "June 2026 – Present",
+        type: "work",
+        points: [
+            "Agentic AI Systems: Designed and shipped a tool-calling AI agent for autonomous board-health monitoring, enforcing evidence-gating and usage limits that reject unsupported model recommendations before they reach a human reviewer.",
+            "LLM Infrastructure: Built a provider-agnostic LLM integration layer (Anthropic, Groq) with automatic retry and failover, and a pluggable board-integration layer unifying four project-tracker APIs (Linear, Azure DevOps, GitHub Issues, and an internal option).",
+            "Reliability Engineering: Resolved state-management race conditions and data-consistency bugs; wrote automated agent evaluation tests and implemented end-to-end audit logging for deterministic CI and production monitoring.",
+        ],
+    },
+    {
+        title: "Research Assistant",
+        company_name: "University of California, Irvine",
+        location: "Irvine, CA",
+        icon: "🔬",
+        iconBg: "#8B5CF6",
+        date: "May 2026 – Present",
+        type: "work",
+        points: [
+            "Model Optimization: Improved a PyTorch 3D pose-discriminator's test accuracy from 89% to 95%+ by diagnosing a BatchNorm training instability and re-tuning the learning-rate schedule.",
+            "Failure Mode Analysis: Identified and closed a spurious accuracy shortcut in the pose classifier through redesigned sample pairing and hard-negative sampling.",
+            "Evaluation Infrastructure: Built a classification evaluation suite and synthetic-noise augmentation pipeline for reproducible offline validation across 15+ 3D human pose datasets, supporting a literature review targeting academic submission.",
+        ],
+    },
+    {
         title: "Masters in Computer Science",
         company_name: "University of California, Irvine",
         location: "Irvine, CA",
         icon: "🎓",
         iconBg: "#3B82F6",
-        date: "September 2025 – December 2026",
+        date: "September 2025 – Present",
         type: "education",
         points: [
             "Graduate studies in Computer Science with focus on AI/ML systems",
@@ -124,9 +169,9 @@ export const experiences = [
         date: "August 2024 – August 2025",
         type: "work",
         points: [
-            "GenAI Document Pipelines: Architected production-grade RAG pipelines using LangGraph and LangSmith to transform unstructured insurance binders into structured JSON. Delivered a client-ready solution for Lockton/TRNDigital in 2 weeks, slashing processing time from hours to seconds.",
-            "Intelligent Talent Acquisition: Engineered a resume screening engine leveraging Azure AI Search and GPT-based re-ranking. Optimized candidate-to-role matching precision and reduced manual HR screening effort by 80%.",
-            "Technical Leadership: Mentored 2 interns through structured NLP/CV roadmaps, increasing team sprint velocity and enabling the independent delivery of production-ready features.",
+            "GenAI Document Pipelines: Architected production-grade RAG pipelines using LangGraph and LangSmith to transform unstructured insurance binders into structured JSON, delivering a client-ready solution for Lockton and TRNDigital in 2 weeks and cutting processing time from hours to seconds.",
+            "Intelligent Talent Acquisition: Engineered a resume-screening engine using Azure AI Search and GPT-based re-ranking, improving candidate-to-role matching precision and reducing manual HR screening effort by 80%.",
+            "Technical Leadership: Mentored 2 interns through structured NLP and Computer Vision roadmaps, increasing sprint velocity and enabling independent delivery of production-ready features.",
         ],
     },
     {
@@ -138,9 +183,9 @@ export const experiences = [
         date: "June 2023 – August 2023",
         type: "work",
         points: [
-            "Department Foundation: Pioneered the AI department as the inaugural hire, establishing the technical roadmap for automated hobby assessment.",
-            "Automated Evaluation: Developed CNN-based image comparison and NLP models that automated 60% of manual grading tasks, significantly reducing instructor overhead.",
-            "Scalable Personalization: Deployed automated assessment pipelines that increased student engagement via data-driven feedback and self-paced learning paths.",
+            "Department Foundation: Founded the AI department as its first hire, defining the technical roadmap for automated hobby-skill assessment.",
+            "Automated Evaluation: Built CNN-based image comparison and NLP grading models, automating 60% of manual assessment tasks and reducing instructor workload.",
+            "Scalable Personalization: Deployed automated feedback pipelines that increased student engagement through data-driven, self-paced learning paths.",
         ],
     },
     {
@@ -152,9 +197,9 @@ export const experiences = [
         date: "January 2023 – April 2023",
         type: "work",
         points: [
-            "Predictive Analytics: Developed a high-performance forecasting system using Bidirectional LSTMs, achieving 73% directional accuracy in stock movement prediction.",
-            "Data Pipeline Optimization: Engineered real-time predictive pipelines that fused sentiment analysis with time-series data to improve investment decision-making.",
-            "Risk Mitigation: Surfaced automated data insights that helped mitigate portfolio risk through proactive market signals.",
+            "Predictive Analytics: Built a Bidirectional LSTM forecasting system achieving 73% directional accuracy in stock-movement prediction.",
+            "Data Pipeline Optimization: Engineered real-time pipelines fusing sentiment analysis with time-series data to improve investment decision-making.",
+            "Risk Mitigation: Surfaced automated market signals that helped reduce portfolio risk through proactive alerts.",
         ],
     },
     {
@@ -179,9 +224,9 @@ export const experiences = [
         date: "June 2021 – December 2021",
         type: "work",
         points: [
-            "Autonomous Robotics: Designed and built Arduino-based robots using sensor fusion and real-time navigation algorithms to navigate complex environments without human input.",
-            "National Competition: Competed in IIT Bombay's e-Yantra Robotics Competition (EYRC), gaining hands-on experience in hardware-software integration and algorithm development.",
-            "Foundation of Expertise: This role established the core problem-solving and embedded systems skills that later shaped my career in Computer Vision and AI.",
+            "Autonomous Robotics: Designed and built Arduino-based robots using sensor fusion and real-time navigation algorithms to operate in complex environments without human input.",
+            "National Competition: Competed in IIT Bombay's e-Yantra Robotics Competition (EYRC), gaining hands-on experience in hardware-software integration and embedded systems.",
+            "Foundation of Expertise: Built the problem-solving and embedded-systems skills that later shaped my work in Computer Vision and AI.",
         ],
     },
     {
@@ -203,8 +248,6 @@ export const experiences = [
         ],
     },
 ];
-
-
 
 export const socialLinks = [
     {

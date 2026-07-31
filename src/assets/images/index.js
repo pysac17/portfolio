@@ -8,6 +8,7 @@ import lotus from './lotus.png'
 import projectCell from './projectCell.png'
 import techxleIcon from './techxleIcon.png'
 import wave from './wave.png'
+import bells from './bells.png'
 
 export {
     boat,
@@ -20,4 +21,5 @@ export {
     projectCell,
     techxleIcon,
     wave,
+    bells,
 }
