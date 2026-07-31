@@ -305,7 +305,7 @@ const About = () => {
             {item.title}
             {item.isOngoing && <span className='ml-1 text-emerald-300'>• Current</span>}
           </div>
-          <div className='text-gray-300'>{item.company_name} — {item.formattedDateRange}</div>
+          <div className='text-gray-300'>{item.company_name} - {item.formattedDateRange}</div>
         </div>
       </div>
     </motion.div>
@@ -316,12 +316,11 @@ const About = () => {
       <h1 className="head-text">
         Hello, I'm <span className="blue-gradient_text font-semibold drop-shadow">Sachi</span>
       </h1>
-      <h3 className="mt-2 text-slate-900">CS Grad Student @ UC Irvine | Ex Associate AI Engineer</h3>
+      <h3 className="mt-2 text-slate-900">CS Grad Student @ UC Irvine | AI/ML Engineer</h3>
 
       <div className="mt-5 flex flex-col gap-3 text-slate-900">
         <p>
-          I build AI systems that don't just exist in research papers—they work in production. From architecting GenAI pipelines for global insurance firms to securing a national patent for computer vision, I specialize in bridging the gap between complex algorithms and real-world utility.
-        </p>
+          I build production AI systems - GenAI pipelines, computer vision, and lately agentic tooling; with a focus on making them reliable, not just impressive in a demo.        </p>
       </div>
 
       {/* Skills Section */}
