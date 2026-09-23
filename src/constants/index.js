@@ -124,7 +124,7 @@ export const experiences = [
         location: "Remote",
         icon: techxleIcon,
         iconBg: "#6366F1",
-        date: "June 2026 – Present",
+        date: "June 2026 – September 2026",
         type: "work",
         points: [
             "Agentic AI Systems: Designed and shipped a tool-calling AI agent for autonomous board-health monitoring, enforcing evidence-gating and usage limits that reject unsupported model recommendations before they reach a human reviewer.",

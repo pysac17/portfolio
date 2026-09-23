@@ -233,9 +233,6 @@ const ArtGallery = () => {
             <p>
               Every single canvas here is painted in <strong>acrylic, built up in slow, deliberate layers</strong>. Some take 40+ hours of patient execution. There are no shortcuts here, only presence, labor, and heart.
             </p>
-            <p className="pt-2 text-slate-900 font-medium">
-              I believe that <em>you cannot be late in your own life</em>. Put your head down, do the work with humility, lead with kindness, and trust that everything unfolds exactly when it is meant to.
-            </p>
           </div>
         </motion.div>
       </div>
