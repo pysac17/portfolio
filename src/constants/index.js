@@ -99,21 +99,8 @@ export const skills = [
     { name: "Arduino", type: "Robotics", level: "Advanced" },
 ];
 
+// Timeline cards on the About page render in this array order
 export const experiences = [
-    {
-        title: "AI Intern",
-        company_name: "TechXL LLC",
-        location: "Remote",
-        icon: techxleIcon,
-        iconBg: "#6366F1",
-        date: "June 2026 – September 2026",
-        type: "work",
-        points: [
-            "Agentic AI Systems: Designed an evidence-gated, tool-calling Board Assistant with iteration and tool-call caps that only queues suggestions for human approval.",
-            "SDLC Pipeline: Built a LangGraph pipeline (FastAPI, PostgreSQL) where PM and Scrum agents turn feature ideas into validated PRDs and stories behind human approval gates, then sync tickets to Linear, GitHub Issues, or an internal board.",
-            "LLM Infrastructure: Built a provider-agnostic LLM layer (Anthropic, Groq) with retry, backup-model, and escalation failover, plus audit logging.",
-        ],
-    },
     {
         title: "Research Assistant",
         company_name: "University of California, Irvine",
@@ -141,6 +128,20 @@ export const experiences = [
         ],
     },
     {
+        title: "AI Intern",
+        company_name: "TechXL LLC",
+        location: "Remote",
+        icon: techxleIcon,
+        iconBg: "#6366F1",
+        date: "June 2026 – September 2026",
+        type: "work",
+        points: [
+            "Agentic AI Systems: Designed an evidence-gated, tool-calling Board Assistant with iteration and tool-call caps that only queues suggestions for human approval.",
+            "SDLC Pipeline: Built a LangGraph pipeline (FastAPI, PostgreSQL) where PM and Scrum agents turn feature ideas into validated PRDs and stories behind human approval gates, then sync tickets to Linear, GitHub Issues, or an internal board.",
+            "LLM Infrastructure: Built a provider-agnostic LLM layer (Anthropic, Groq) with retry, backup-model, and escalation failover, plus audit logging.",
+        ],
+    },
+    {
         title: "Associate AI Engineer",
         company_name: "Techxle",
         location: "Mumbai (Remote)",
@@ -153,6 +154,20 @@ export const experiences = [
             "Enterprise Solutions: Contributed to an enterprise Agentic RAG system and a Power Apps employee-tracking platform (DevOps integration, AI-generated monthly status reports, PTO management).",
             "Talent Acquisition: Engineered an HR RAG screening engine with Azure AI Search and GPT reranking, cutting manual screening effort by 80%.",
             "Mentorship: Mentored 2 interns in NLP and computer vision.",
+        ],
+    },
+    {
+        title: "B.E. in AI & Data Science",
+        company_name: "Fr. Conceicao Rodrigues College of Engineering",
+        location: "Mumbai",
+        icon: "🎓",
+        iconBg: "#3B82F6",
+        date: "January 2020 – August 2024",
+        type: "education",
+        points: [
+            "GPA 3.78",
+            "National patent for a real-time yoga posture detection method (No. 202321077089)",
+            "Unscript 2023 hackathon runner-up; NASA Space Apps 2022 global nominee",
         ],
     },
     {
@@ -178,20 +193,6 @@ export const experiences = [
         type: "work",
         points: [
             "Forecasting: Developed a bidirectional LSTM stock-forecasting model reaching 73% directional accuracy.",
-        ],
-    },
-    {
-        title: "B.E. in AI & Data Science",
-        company_name: "Fr. Conceicao Rodrigues College of Engineering",
-        location: "Mumbai",
-        icon: "🎓",
-        iconBg: "#3B82F6",
-        date: "January 2020 – August 2024",
-        type: "education",
-        points: [
-            "GPA 3.78",
-            "National patent for a real-time yoga posture detection method (No. 202321077089)",
-            "Unscript 2023 hackathon runner-up; NASA Space Apps 2022 global nominee",
         ],
     },
     {

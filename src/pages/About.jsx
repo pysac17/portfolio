@@ -287,7 +287,8 @@ const About = () => {
     const LANE_AREA_TOP = 32;
     const chronoMapTotalHeight = LANE_AREA_TOP + totalLaneHeight + 16;
 
-    const sortedCards = [...processed].sort((a, b) => b.start.getTime() - a.start.getTime());
+    // Cards follow the order of the experiences array in constants (not sorted by date)
+    const sortedCards = processed;
 
     return {
       chronoMapData: {
