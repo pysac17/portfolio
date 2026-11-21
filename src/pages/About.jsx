@@ -316,11 +316,12 @@ const About = () => {
       <h1 className="head-text">
         Hello, I'm <span className="blue-gradient_text font-semibold drop-shadow">Sachi</span>
       </h1>
-      <h3 className="mt-2 text-slate-900">CS Grad Student @ UC Irvine | AI/ML Engineer</h3>
+      <h3 className="mt-2 text-slate-900">Master of Computer Science @ UC Irvine | AI/ML Engineer</h3>
 
       <div className="mt-5 flex flex-col gap-3 text-slate-900">
         <p>
-          I build production AI systems - GenAI pipelines, computer vision, and lately agentic tooling; with a focus on making them reliable, not just impressive in a demo.        </p>
+          I build AI systems that hold up outside a demo: RAG pipelines, tool-calling agents, and computer vision, with tests, approval gates, and clear failure handling.
+        </p>
       </div>
 
       {/* Skills Section */}

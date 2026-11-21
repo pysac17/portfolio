@@ -231,6 +231,22 @@ const Contact = () => {
             {loading ? "Sending..." : "Submit"}
           </button>
         </form>
+
+        <div className='mt-10 flex flex-wrap gap-x-6 gap-y-2 text-black-500 font-semibold'>
+          <a href='mailto:sachijs@uci.edu' className='hover:underline'>
+            Email: sachijs@uci.edu
+          </a>
+          <a href='https://www.linkedin.com/in/sachijshah/' target='_blank' rel='noopener noreferrer' className='hover:underline'>
+            LinkedIn
+          </a>
+          <a href='https://github.com/pysac17' target='_blank' rel='noopener noreferrer' className='hover:underline'>
+            GitHub
+          </a>
+          {/* Placeholder: drop Sachi_Shah_Resume.pdf into /public for this link to work. */}
+          <a href='/Sachi_Shah_Resume.pdf' download className='hover:underline'>
+            Resume (PDF)
+          </a>
+        </div>
       </div>
 
       <div className='lg:w-1/2 w-full lg:h-auto md:h-[650px] h-[350px]'>

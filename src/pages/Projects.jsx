@@ -27,12 +27,19 @@ const Projects = () => {
       whileHover={{ y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
       className='bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 flex flex-col min-h-[500px]'
     >
-      {/* Patent Badge */}
-      {project.hasPatent && (
-        <div className='mb-4'>
-          <span className='inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-purple-600 to-blue-600 text-white'>
-            🏆 Patent Holder
-          </span>
+      {/* Patent / Award Badges */}
+      {(project.hasPatent || project.badge) && (
+        <div className='mb-4 flex flex-wrap gap-2'>
+          {project.hasPatent && (
+            <span className='inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-purple-600 to-blue-600 text-white'>
+              🏆 Patent Holder
+            </span>
+          )}
+          {project.badge && (
+            <span className='inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-purple-600 to-blue-600 text-white'>
+              🏆 {project.badge}
+            </span>
+          )}
         </div>
       )}
 
@@ -119,7 +126,7 @@ const Projects = () => {
       </h1>
 
       <div className="mt-5 flex flex-col gap-3 text-slate-900">
-        <p>I've worked on several projects that are close to my heart. They showcase my dedication and skills. Feel free to explore them further!</p>
+        <p>Selected work in AI/ML, computer vision, and systems. Each card links to its source.</p>
       </div>
 
       {/* Two-Column Grid Layout */}

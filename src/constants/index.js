@@ -46,80 +46,62 @@ export const skillLevelColors = {
 };
 
 export const skills = [
-    // --- 🧠 AI, MACHINE LEARNING & GEN AI ---
+    // --- AI/ML ---
     { name: "LangGraph", type: "AI/ML", level: "Expert" },
-    { name: "Large Language Models (LLMs)", type: "AI/ML", level: "Expert" },
-    { name: "Agentic AI Systems", type: "AI/ML", level: "Advanced" },
-    { name: "Generative AI", type: "AI/ML", level: "Expert" },
-    { name: "Prompt Engineering", type: "AI/ML", level: "Advanced" },
-    { name: "LLM Evaluation & Testing", type: "AI/ML", level: "Advanced" },
-    { name: "Anthropic Claude API", type: "AI/ML", level: "Advanced" },
-    { name: "Groq", type: "AI/ML", level: "Intermediate" },
     { name: "LangSmith", type: "AI/ML", level: "Advanced" },
     { name: "RAG", type: "AI/ML", level: "Expert" },
-    { name: "MediaPipe", type: "AI/ML", level: "Expert" },
+    { name: "Agentic RAG", type: "AI/ML", level: "Intermediate" },
+    { name: "LLM APIs (Anthropic, Groq)", type: "AI/ML", level: "Advanced" },
+    { name: "Prompt Engineering", type: "AI/ML", level: "Advanced" },
     { name: "PyTorch", type: "AI/ML", level: "Advanced" },
     { name: "TensorFlow", type: "AI/ML", level: "Advanced" },
-    { name: "OpenCV", type: "AI/ML", level: "Advanced" },
     { name: "Scikit-learn", type: "AI/ML", level: "Advanced" },
-    { name: "Vision Transformers (ViT)", type: "AI/ML", level: "Advanced" },
-    { name: "LSTMs & Time-Series", type: "AI/ML", level: "Advanced" },
-    { name: "Multi-modal Learning", type: "AI/ML", level: "Advanced" },
-    { name: "OCR", type: "AI/ML", level: "Advanced" },
-    { name: "Natural Language Processing (NLP)", type: "AI/ML", level: "Expert" },
+    { name: "OpenCV", type: "AI/ML", level: "Advanced" },
+    { name: "MediaPipe", type: "AI/ML", level: "Expert" },
     { name: "CNNs", type: "AI/ML", level: "Advanced" },
-    { name: "Sentiment Analysis", type: "AI/ML", level: "Advanced" },
+    { name: "LSTMs", type: "AI/ML", level: "Advanced" },
+    { name: "Reinforcement Learning (PPO/DQN)", type: "AI/ML", level: "Intermediate" },
 
-    // --- 💻 SDE & SYSTEMS ---
-    { name: "System Design", type: "SDE", level: "Advanced" },
-    { name: "Data Structures & Algorithms", type: "SDE", level: "Advanced" },
-    { name: "Distributed Training", type: "SDE", level: "Advanced" },
-    { name: "OOP", type: "SDE", level: "Advanced" },
-    { name: "CI/CD", type: "SDE", level: "Advanced" },
-    { name: "Automated Testing (pytest)", type: "SDE", level: "Advanced" },
+    // --- Backend and Systems: systems-level items under SDE & Systems ---
+    { name: "C", type: "SDE", level: "Intermediate" },
+    { name: "C++", type: "SDE", level: "Advanced" },
     { name: "RocksDB", type: "SDE", level: "Intermediate" },
-    { name: "RESTful APIs", type: "SDE", level: "Advanced" },
-    { name: "DBMS", type: "SDE", level: "Advanced" },
+    { name: "REST APIs", type: "SDE", level: "Advanced" },
+    { name: "CI", type: "SDE", level: "Advanced" },
 
-    // --- 🛠️ LANGUAGES & BACKEND ---
+    // --- Backend and Systems: languages, frameworks and databases under Backend ---
     { name: "Python", type: "Backend", level: "Expert" },
-    { name: "Django", type: "Backend", level: "Advanced" },
-    { name: "FastAPI", type: "Backend", level: "Advanced" },
-    { name: "Streamlit", type: "Backend", level: "Advanced" },
     { name: "Java", type: "Backend", level: "Advanced" },
-    { name: "C++", type: "Backend", level: "Advanced" },
-    { name: "SQL (MySQL)", type: "Backend", level: "Advanced" },
-    { name: "PostgreSQL", type: "Backend", level: "Advanced" },
+    { name: "SQL", type: "Backend", level: "Advanced" },
+    { name: "MongoDB", type: "Backend", level: "Intermediate" },
+    { name: "FastAPI", type: "Backend", level: "Advanced" },
+    { name: "Django", type: "Backend", level: "Advanced" },
     { name: "Celery", type: "Backend", level: "Advanced" },
-    { name: "Flask", type: "Backend", level: "Intermediate" },
-    { name: "Redis", type: "Backend", level: "Intermediate" },
+    { name: "PostgreSQL", type: "Backend", level: "Advanced" },
+    { name: "Streamlit", type: "Backend", level: "Advanced" },
 
-    // --- ☁️ CLOUD & TOOLS ---
+    // --- Cloud and Platforms (plus dev tooling) under Cloud & Tools ---
     { name: "Azure AI Search", type: "Cloud", level: "Expert" },
-    { name: "AWS S3", type: "Cloud", level: "Advanced" },
+    { name: "Azure AI", type: "Cloud", level: "Intermediate" },
+    { name: "Power Platform (Power Apps)", type: "Cloud", level: "Intermediate" },
+    { name: "AWS (S3, EC2, Lambda, DynamoDB)", type: "Cloud", level: "Intermediate" },
+    { name: "Unreal Engine 5", type: "Cloud", level: "Intermediate" },
     { name: "Docker", type: "Cloud", level: "Advanced" },
     { name: "Git & GitHub", type: "Cloud", level: "Advanced" },
-    { name: "MongoDB", type: "Cloud", level: "Intermediate" },
-    { name: "PowerApps", type: "Cloud", level: "Intermediate" },
 
-    // --- 🎨 FRONTEND & DESIGN ---
-    { name: "ReactJS", type: "Frontend", level: "Advanced" },
+    // --- Frontend and Other ---
+    { name: "React", type: "Frontend", level: "Advanced" },
     { name: "Angular", type: "Frontend", level: "Intermediate" },
-    { name: "Three.JS", type: "Frontend", level: "Intermediate" },
-    { name: "HTML5/CSS3", type: "Frontend", level: "Advanced" },
+    { name: "Three.js", type: "Frontend", level: "Intermediate" },
+    { name: "HTML/CSS", type: "Frontend", level: "Advanced" },
     { name: "JavaScript (ES6+)", type: "Frontend", level: "Advanced" },
-    { name: "Bootstrap / Sass", type: "Frontend", level: "Intermediate" },
     { name: "Blender", type: "Design", level: "Intermediate" },
-    { name: "Canva", type: "Design", level: "Intermediate" },
-
-    // --- 🤖 ROBOTICS ---
     { name: "Arduino", type: "Robotics", level: "Advanced" },
-    { name: "Proteus", type: "Robotics", level: "Intermediate" },
 ];
 
 export const experiences = [
     {
-        title: "Artificial Intelligence Intern",
+        title: "AI Intern",
         company_name: "TechXL LLC",
         location: "Remote",
         icon: techxleIcon,
@@ -127,9 +109,9 @@ export const experiences = [
         date: "June 2026 – September 2026",
         type: "work",
         points: [
-            "Agentic AI Systems: Designed and shipped a tool-calling AI agent for autonomous board-health monitoring, enforcing evidence-gating and usage limits that reject unsupported model recommendations before they reach a human reviewer.",
-            "LLM Infrastructure: Built a provider-agnostic LLM integration layer (Anthropic, Groq) with automatic retry and failover, and a pluggable board-integration layer unifying four project-tracker APIs (Linear, Azure DevOps, GitHub Issues, and an internal option).",
-            "Reliability Engineering: Resolved state-management race conditions and data-consistency bugs; wrote automated agent evaluation tests and implemented end-to-end audit logging for deterministic CI and production monitoring.",
+            "Agentic AI Systems: Designed an evidence-gated, tool-calling Board Assistant with iteration and tool-call caps that only queues suggestions for human approval.",
+            "SDLC Pipeline: Built a LangGraph pipeline (FastAPI, PostgreSQL) where PM and Scrum agents turn feature ideas into validated PRDs and stories behind human approval gates, then sync tickets to Linear, GitHub Issues, or an internal board.",
+            "LLM Infrastructure: Built a provider-agnostic LLM layer (Anthropic, Groq) with retry, backup-model, and escalation failover, plus audit logging.",
         ],
     },
     {
@@ -141,13 +123,12 @@ export const experiences = [
         date: "May 2026 – Present",
         type: "work",
         points: [
-            "Model Optimization: Improved a PyTorch 3D pose-discriminator's test accuracy from 89% to 95%+ by diagnosing a BatchNorm training instability and re-tuning the learning-rate schedule.",
-            "Failure Mode Analysis: Identified and closed a spurious accuracy shortcut in the pose classifier through redesigned sample pairing and hard-negative sampling.",
-            "Evaluation Infrastructure: Built a classification evaluation suite and synthetic-noise augmentation pipeline for reproducible offline validation across 15+ 3D human pose datasets, supporting a literature review targeting academic submission.",
+            "Synthetic Dataset: Contributing to UnrealPose, a ~1M-frame synthetic human-pose dataset (5 MetaHuman subjects) from a UE5 pipeline exporting 3D joints, 2D keypoints with occlusion flags, masks, and camera parameters; helping write the paper.",
+            "Pose Discriminator: Trained a multi-branch CNN on 3DPW heatmaps: ~95% test accuracy and 0.99 ROC-AUC over 80 epochs, evaluated with F1 and per-sequence breakdowns.",
         ],
     },
     {
-        title: "Masters in Computer Science",
+        title: "Master of Computer Science",
         company_name: "University of California, Irvine",
         location: "Irvine, CA",
         icon: "🎓",
@@ -155,9 +136,8 @@ export const experiences = [
         date: "September 2025 – Present",
         type: "education",
         points: [
-            "Graduate studies in Computer Science with focus on AI/ML systems",
-            "Advanced coursework in machine learning, distributed systems, and software engineering",
-            "Research in production AI systems deployment",
+            "GPA 3.88",
+            "Coursework: Algorithms, Artificial Intelligence, Parallel and Distributed Computing, Operating Systems",
         ],
     },
     {
@@ -169,9 +149,10 @@ export const experiences = [
         date: "August 2024 – August 2025",
         type: "work",
         points: [
-            "GenAI Document Pipelines: Architected production-grade RAG pipelines using LangGraph and LangSmith to transform unstructured insurance binders into structured JSON, delivering a client-ready solution for Lockton and TRNDigital in 2 weeks and cutting processing time from hours to seconds.",
-            "Intelligent Talent Acquisition: Engineered a resume-screening engine using Azure AI Search and GPT-based re-ranking, improving candidate-to-role matching precision and reducing manual HR screening effort by 80%.",
-            "Technical Leadership: Mentored 2 interns through structured NLP and Computer Vision roadmaps, increasing sprint velocity and enabling independent delivery of production-ready features.",
+            "GenAI Document Pipelines: Built RAG pipelines (LangGraph, LangSmith) with a 4-person team for Lockton and TRNDigital, converting insurance binders and quotes into structured JSON and cutting processing time from hours to seconds.",
+            "Enterprise Solutions: Contributed to an enterprise Agentic RAG system and a Power Apps employee-tracking platform (DevOps integration, AI-generated monthly status reports, PTO management).",
+            "Talent Acquisition: Engineered an HR RAG screening engine with Azure AI Search and GPT reranking, cutting manual screening effort by 80%.",
+            "Mentorship: Mentored 2 interns in NLP and computer vision.",
         ],
     },
     {
@@ -183,9 +164,8 @@ export const experiences = [
         date: "June 2023 – August 2023",
         type: "work",
         points: [
-            "Department Foundation: Founded the AI department as its first hire, defining the technical roadmap for automated hobby-skill assessment.",
-            "Automated Evaluation: Built CNN-based image comparison and NLP grading models, automating 60% of manual assessment tasks and reducing instructor workload.",
-            "Scalable Personalization: Deployed automated feedback pipelines that increased student engagement through data-driven, self-paced learning paths.",
+            "First AI Hire: Built grading models (language learning, Photoshop, drawing similarity) so adult hobby learners could improve without waiting on a teacher.",
+            "Pilot Results: Piloted with students, automating about 60% of grading.",
         ],
     },
     {
@@ -197,23 +177,19 @@ export const experiences = [
         date: "January 2023 – April 2023",
         type: "work",
         points: [
-            "Predictive Analytics: Built a Bidirectional LSTM forecasting system achieving 73% directional accuracy in stock-movement prediction.",
-            "Data Pipeline Optimization: Engineered real-time pipelines fusing sentiment analysis with time-series data to improve investment decision-making.",
-            "Risk Mitigation: Surfaced automated market signals that helped reduce portfolio risk through proactive alerts.",
+            "Forecasting: Developed a bidirectional LSTM stock-forecasting model reaching 73% directional accuracy.",
         ],
     },
     {
         title: "B.E. in AI & Data Science",
-        company_name: "Father Agnel College of Engineering",
+        company_name: "Fr. Conceicao Rodrigues College of Engineering",
         location: "Mumbai",
         icon: "🎓",
         iconBg: "#3B82F6",
         date: "January 2020 – August 2024",
         type: "education",
         points: [
-            "Bachelor's degree with Computer Vision patent achievement",
-            "Graduated with distinction in AI & Data Science",
-            "Secured national patent for computer vision innovation in medical imaging diagnostics",
+            "National patent for a real-time yoga posture detection method (No. 202321077089)",
         ],
     },
     {
@@ -224,9 +200,8 @@ export const experiences = [
         date: "June 2021 – December 2021",
         type: "work",
         points: [
-            "Autonomous Robotics: Designed and built Arduino-based robots using sensor fusion and real-time navigation algorithms to operate in complex environments without human input.",
-            "National Competition: Competed in IIT Bombay's e-Yantra Robotics Competition (EYRC), gaining hands-on experience in hardware-software integration and embedded systems.",
-            "Foundation of Expertise: Built the problem-solving and embedded-systems skills that later shaped my work in Computer Vision and AI.",
+            "Designed and built Arduino-based autonomous robots (line-following and obstacle-avoidance) using sensor fusion and real-time navigation algorithms.",
+            "Competed in IIT Bombay's e-Yantra Robotics Competition (EYRC), gaining hands-on experience in embedded systems and hardware-software integration.",
         ],
     },
     {
@@ -243,7 +218,7 @@ export const experiences = [
             "Educational Equity: We provide comprehensive financial aid for children's tuition and supplies, ensuring that financial barriers do not prevent access to schooling",
             "Animal Welfare: Actively engaged in animal safety and providing professional veterinary services to strays and local shelters",
             "Elderly Care: Supporting senior citizens with home-cooked meals, companionship, and essential care services",
-            "Infrastructure Impact: Built 3 orphanages with educational facilities, established 5 Digital Centers in rural Zillas with 100+ computers, distributed 500+ cycles, 1000+ uniforms, and 2000+ books to underprivileged students",
+            "Infrastructure Impact: The foundation has built 3 orphanages with educational facilities, established 5 Digital Centers in rural Zillas with 100+ computers, distributed 500+ cycles, 1000+ uniforms, and 2000+ books to underprivileged students",
             "Philosophy: Emphasizing Jeevdaya (compassion for all living beings) and Anukampa (empathy) as core life principles",
         ],
     },
@@ -269,6 +244,30 @@ export const socialLinks = [
 
 export const projects = [
     {
+        name: 'Brainwave-Based Adaptive Learning (UCI)',
+        problem: 'Standard learning platforms don\'t adapt to user cognitive fatigue or mental load.',
+        tech: ['Django', 'Celery', 'BLE', 'Scikit-learn', 'LLMs'],
+        impact: [
+            'Achieved 98% accuracy in real-time cognitive state detection (focus vs. neutral) with sub-200ms inference',
+            'LLM-generated, multi-LLM-evaluated study recommendations; over 30 sessions across 2 months, self-rated focus averaged 7.34/10 when followed vs 4.91 when not',
+        ],
+        githubLink: 'https://github.com/areebar-netizen/MCS_Capstone',
+        liveLink: '#',
+        hasPatent: false,
+    },
+    {
+        name: 'Live Yoga Posture Detection (Patent Holder)',
+        problem: 'Low-angle poses (like planks) often cause computer vision systems to fail.',
+        tech: ['MediaPipe', 'CNNs', 'Python'],
+        impact: [
+            'MediaPipe consistently missed leg landmarks at low camera angles (planks), so the classifier was trained on that repeatable failure pattern, which became the MVP',
+            'Secured a National Patent (No. 202321077089) for the methodology',
+        ],
+        githubLink: 'https://github.com/pysac17/YogaGuru',
+        liveLink: '#',
+        hasPatent: true,
+    },
+    {
         name: 'Hierarchical 3D Reconstruction Pipeline (UCI)',
         problem: 'Reconstructing 3D scenes from noisy, unstructured real-world images.',
         tech: ['DINOv2', 'HDBSCAN', 'ALIKED', 'LightGlue'],
@@ -278,14 +277,30 @@ export const projects = [
         hasPatent: false,
     },
     {
-        name: 'Brainwave-Based Adaptive Learning (UCI)',
-        problem: 'Standard learning platforms don\'t adapt to user cognitive fatigue or mental load.',
-        tech: ['Django', 'Celery', 'BLE', 'Scikit-learn'],
-        impact: ['Achieved 98% accuracy in real-time cognitive state detection (focus vs. neutral) with sub-200ms inference', 'Generated personalized study plans that maximized "deep work" duration'],
-        githubLink: 'https://github.com/areebar-netizen/MCS_Capstone',
+        name: 'Deep RL for Autonomous Racing (UCI)',
+        problem: 'Mastering high-speed maneuvering and sharp turns in simulated autonomous driving.',
+        tech: ['PyTorch', 'Reinforcement Learning (PPO/DQN)', 'Custom Telemetry'],
+        impact: [
+            'Developed a custom reward architecture that balanced speed with smooth steering',
+            'Best run completed a full lap; average lap progress rose from under 10% to about 36% over 200 training episodes',
+        ],
+        githubLink: 'https://github.com/pysac17/aiProject',
         liveLink: '#',
         hasPatent: false,
     },
+    {
+        name: 'Satellite Contrail Detection',
+        problem: 'Environmental monitoring through satellite imagery analysis.',
+        tech: ['MaxViT', 'EfficientNet', 'PyTorch'],
+        impact: [
+            'Benchmarked MaxViT and EfficientNet with grid-search hyperparameter tuning',
+            'Found a 3% accuracy improvement for environmental monitoring',
+        ],
+        githubLink: 'https://github.com/pysac17/contrails-detection',
+        liveLink: '#',
+        hasPatent: false,
+    },
+    // TODO: add one measured result (throughput or latency)
     {
         name: 'High-Concurrency Transaction Engine (UCI)',
         problem: 'Benchmarking performance trade-offs between OCC and 2PL in high-contention environments.',
@@ -296,36 +311,21 @@ export const projects = [
         hasPatent: false,
     },
     {
-        name: 'Deep RL for Autonomous Racing (UCI)',
-        problem: 'Mastering high-speed maneuvering and sharp turns in simulated autonomous driving.',
-        tech: ['PyTorch', 'Reinforcement Learning (PPO/DQN)', 'Custom Telemetry'],
-        impact: ['Developed a custom reward architecture that balanced speed with smooth steering', 'Resulted in a model capable of completing full-lap cycles on complex circuits'],
-        githubLink: 'https://github.com/pysac17/aiProject',
-        liveLink: '#',
-        hasPatent: false,
-    },
-    {
-        name: 'Live Yoga Posture Detection (Patent Holder)',
-        problem: 'Low-angle poses (like planks) often cause computer vision systems to fail.',
-        tech: ['MediaPipe', 'CNNs', 'Python'],
-        impact: ['Resolved critical detection failures to achieve 100% reliability across standard routines', 'Secured a National Patent (No. 202321077089) for the methodology'],
-        githubLink: 'https://github.com/pysac17/YogaGuru',
-        liveLink: '#',
-        hasPatent: true,
-    },
-    {
-        name: 'Satellite Contrail Detection',
-        problem: 'Environmental monitoring through satellite imagery analysis.',
-        tech: ['MaxViT', 'EfficientNet', 'PyTorch'],
-        impact: ['Identified a 3% accuracy improvement for environmental monitoring', 'Benchmarked multiple architectures via grid-search hyperparameter tuning'],
-        githubLink: 'https://github.com/pysac17/contrails-detection',
+        name: 'Operating Systems Projects (C)',
+        problem: 'Building core OS components from scratch in C.',
+        tech: ['C', 'Systems Programming', 'Direct I/O'],
+        impact: [
+            'Implemented a user-space cooperative thread scheduler and a custom malloc',
+            'Built a key/value file system on a loopback block device using direct I/O, write buffering, and read caching',
+        ],
+        githubLink: 'https://github.com/pysac17/cs238p-os-projects',
         liveLink: '#',
         hasPatent: false,
     },
     {
         name: 'Unscript Hackathon (Runner Up)',
         problem: 'High-volume document processing and quality classification.',
-        tech: ['OCR', 'Image Processing', 'Python'],
+        tech: ['OCR', 'Image Processing', 'Python', '2023'],
         impact: ['Built OCR-based image quality classifier and extraction tool', 'Secured runner-up at Unscript AIML Hackathon 2023'],
         githubLink: 'https://github.com/GlenR16/CtrlAlt-Elite_Unscript-2k23',
         liveLink: '#',
@@ -339,6 +339,7 @@ export const projects = [
         githubLink: 'https://github.com/khushi-14/luminary_nasaspaceappschallange',
         liveLink: '#',
         hasPatent: false,
+        badge: 'Global Nominee, NASA Space Apps 2022',
     },
     {
         name: 'Netflix Clone',
