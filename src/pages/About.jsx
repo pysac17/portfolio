@@ -3,6 +3,94 @@ import { skills, experiences } from '../constants';
 import CTA from '../components/CTA';
 import { motion } from 'framer-motion';
 
+// Defined outside About so clicking a skill tab does not remount these
+// (which would replay the timeline bar animations)
+const ROW_HEIGHT = 20;
+const scrollToCard = (cardId) => {
+  const element = document.getElementById(cardId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+};
+
+const getLevelColor = (level) => {
+  switch(level) {
+    case 'Expert': return 'bg-green-500';
+    case 'Advanced': return 'bg-blue-500';
+    case 'Intermediate': return 'bg-yellow-500';
+    default: return 'bg-gray-500';
+  }
+};
+
+const getCategoryColor = (type) => {
+  switch(type) {
+    case 'AI/ML': return 'bg-blue-100 text-blue-800 border-blue-200';
+    case 'SDE': return 'bg-green-100 text-green-800 border-green-200';
+    case 'Backend': return 'bg-purple-100 text-purple-800 border-purple-200';
+    case 'Cloud': return 'bg-orange-100 text-orange-800 border-orange-200';
+    case 'Frontend': return 'bg-pink-100 text-pink-800 border-pink-200';
+    case 'Design': return 'bg-pink-100 text-pink-800 border-pink-200';
+    case 'Robotics': return 'bg-gray-100 text-gray-800 border-gray-200';
+    default: return 'bg-gray-100 text-gray-800 border-gray-200';
+  }
+};
+
+const SkillBadge = ({ skill, isDimmed }) => (
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+    className={`inline-block ${isDimmed ? 'opacity-30' : 'opacity-100'}`}
+  >
+    <div className={`flex items-center gap-2 px-4 py-2 rounded-full border-2 font-medium text-sm transition-all duration-300 ${getCategoryColor(skill.type)}`}>
+      <span
+        className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${getLevelColor(skill.level)}`}
+        title={skill.level}
+      ></span>
+      <span>{skill.name}</span>
+    </div>
+  </motion.div>
+);
+
+// Reusable Timeline Bar
+const TimelineBar = ({ item, laneBorderClass, laneBgClass }) => (
+  <motion.div
+    initial={{ opacity: 0, scaleX: 0 }}
+    animate={{ opacity: 1, scaleX: 1 }}
+    transition={{ duration: 0.3 }}
+    className='absolute cursor-pointer group z-10'
+    style={{
+      left: item.left,
+      width: item.width,
+      top: `${4 + item.stackLevel * ROW_HEIGHT}px`,
+      height: '16px'
+    }}
+    onClick={() => scrollToCard(item.cardId)}
+    whileHover={{ scale: 1.02, zIndex: 50 }}
+  >
+    <div className={`h-full rounded-full border-2 ${laneBorderClass} ${laneBgClass} hover:shadow-lg transition-all duration-200 relative overflow-hidden`}>
+      <span
+        className='absolute left-0 top-0 bottom-0 w-1.5'
+        style={{ backgroundColor: item.iconBg && item.iconBg !== 'black' ? item.iconBg : '#334155' }}
+      ></span>
+    </div>
+
+    {/* Hover Tooltip */}
+    <div className='absolute -top-8 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50'>
+      <div className='bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap'>
+        <div className='font-semibold flex items-center gap-1'>
+          <span
+            className='inline-block w-2 h-2 rounded-full'
+            style={{ backgroundColor: item.iconBg && item.iconBg !== 'black' ? item.iconBg : '#94a3b8' }}
+          ></span>
+          {item.title}
+          {item.isOngoing && <span className='ml-1 text-emerald-300'>• Current</span>}
+        </div>
+        <div className='text-gray-300'>{item.company_name} - {item.formattedDateRange}</div>
+      </div>
+    </div>
+  </motion.div>
+);
+
 const About = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
@@ -59,7 +147,6 @@ const About = () => {
     return `${months[date.getMonth()]} ${date.getFullYear()}`;
   };
 
-  const ROW_HEIGHT = 20;
   
   // Process timeline data: the right edge is the earliest entry, the left edge is
   // "now" or the latest future end date (e.g. an expected graduation), whichever is later.
@@ -226,13 +313,6 @@ const About = () => {
     };
   }, []);
 
-  const scrollToCard = (cardId) => {
-    const element = document.getElementById(cardId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
   const getBorderColor = (type) => {
     switch(type) {
       case 'education': return 'border-blue-500';
@@ -255,84 +335,6 @@ const About = () => {
   const filteredSkills = selectedCategory === 'All' 
     ? skills 
     : skills.filter(skill => categories.find(cat => cat.name === selectedCategory)?.types.includes(skill.type));
-
-  const getLevelColor = (level) => {
-    switch(level) {
-      case 'Expert': return 'bg-green-500';
-      case 'Advanced': return 'bg-blue-500';
-      case 'Intermediate': return 'bg-yellow-500';
-      default: return 'bg-gray-500';
-    }
-  };
-
-  const getCategoryColor = (type) => {
-    switch(type) {
-      case 'AI/ML': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'SDE': return 'bg-green-100 text-green-800 border-green-200';
-      case 'Backend': return 'bg-purple-100 text-purple-800 border-purple-200';
-      case 'Cloud': return 'bg-orange-100 text-orange-800 border-orange-200';
-      case 'Frontend': return 'bg-pink-100 text-pink-800 border-pink-200';
-      case 'Design': return 'bg-indigo-100 text-indigo-800 border-indigo-200';
-      case 'Robotics': return 'bg-gray-100 text-gray-800 border-gray-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
-    }
-  };
-
-  const SkillBadge = ({ skill, isDimmed }) => (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className={`inline-block ${isDimmed ? 'opacity-30' : 'opacity-100'}`}
-    >
-      <div className={`flex items-center gap-2 px-4 py-2 rounded-full border-2 font-medium text-sm transition-all duration-300 ${getCategoryColor(skill.type)}`}>
-        <span
-          className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${getLevelColor(skill.level)}`}
-          title={skill.level}
-        ></span>
-        <span>{skill.name}</span>
-      </div>
-    </motion.div>
-  );
-
-  // Reusable Timeline Bar
-  const TimelineBar = ({ item, laneBorderClass, laneBgClass }) => (
-    <motion.div
-      initial={{ opacity: 0, scaleX: 0 }}
-      animate={{ opacity: 1, scaleX: 1 }}
-      transition={{ duration: 0.3 }}
-      className='absolute cursor-pointer group z-10'
-      style={{
-        left: item.left,
-        width: item.width,
-        top: `${4 + item.stackLevel * ROW_HEIGHT}px`,
-        height: '16px'
-      }}
-      onClick={() => scrollToCard(item.cardId)}
-      whileHover={{ scale: 1.02, zIndex: 50 }}
-    >
-      <div className={`h-full rounded-full border-2 ${laneBorderClass} ${laneBgClass} hover:shadow-lg transition-all duration-200 relative overflow-hidden`}>
-        <span
-          className='absolute left-0 top-0 bottom-0 w-1.5'
-          style={{ backgroundColor: item.iconBg && item.iconBg !== 'black' ? item.iconBg : '#334155' }}
-        ></span>
-      </div>
-
-      {/* Hover Tooltip */}
-      <div className='absolute -top-8 left-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50'>
-        <div className='bg-gray-900 text-white text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap'>
-          <div className='font-semibold flex items-center gap-1'>
-            <span
-              className='inline-block w-2 h-2 rounded-full'
-              style={{ backgroundColor: item.iconBg && item.iconBg !== 'black' ? item.iconBg : '#94a3b8' }}
-            ></span>
-            {item.title}
-            {item.isOngoing && <span className='ml-1 text-emerald-300'>• Current</span>}
-          </div>
-          <div className='text-gray-300'>{item.company_name} - {item.formattedDateRange}</div>
-        </div>
-      </div>
-    </motion.div>
-  );
 
   return (
     <section className="max-container">
@@ -548,11 +550,7 @@ const About = () => {
                       <div key={idx} className='flex items-start'>
                         <span className='text-gray-400 mr-2 mt-1'>•</span>
                         <p className='text-gray-700 leading-relaxed'>
-                          {idx === 0 && item.type === 'ngo' ? (
-                            <span className='italic font-medium'>"{point}"</span>
-                          ) : (
-                            point
-                          )}
+                          {point}
                         </p>
                       </div>
                     ))}

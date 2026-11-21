@@ -189,7 +189,9 @@ export const experiences = [
         date: "January 2020 – August 2024",
         type: "education",
         points: [
+            "GPA 3.78",
             "National patent for a real-time yoga posture detection method (No. 202321077089)",
+            "Unscript 2023 hackathon runner-up; NASA Space Apps 2022 global nominee",
         ],
     },
     {
@@ -201,7 +203,7 @@ export const experiences = [
         type: "work",
         points: [
             "Designed and built Arduino-based autonomous robots (line-following and obstacle-avoidance) using sensor fusion and real-time navigation algorithms.",
-            "Competed in IIT Bombay's e-Yantra Robotics Competition (EYRC), gaining hands-on experience in embedded systems and hardware-software integration.",
+            "Competed in IIT Bombay's e-Yantra Robotics Competition (EYRC).",
         ],
     },
     {
@@ -213,13 +215,8 @@ export const experiences = [
         date: "January 2020 – Present",
         type: "ngo",
         points: [
-            "Grew up in an environment that taught me to put others before me",
-            "Healthcare Infrastructure: Beyond meal drives, we provide critical medical equipment to hospitals and directly fund life-saving procedures for families in financial distress",
-            "Educational Equity: We provide comprehensive financial aid for children's tuition and supplies, ensuring that financial barriers do not prevent access to schooling",
-            "Animal Welfare: Actively engaged in animal safety and providing professional veterinary services to strays and local shelters",
-            "Elderly Care: Supporting senior citizens with home-cooked meals, companionship, and essential care services",
-            "Infrastructure Impact: The foundation has built 3 orphanages with educational facilities, established 5 Digital Centers in rural Zillas with 100+ computers, distributed 500+ cycles, 1000+ uniforms, and 2000+ books to underprivileged students",
-            "Philosophy: Emphasizing Jeevdaya (compassion for all living beings) and Anukampa (empathy) as core life principles",
+            "Non-profit in Mumbai: meal drives, medical equipment for hospitals, tuition aid for children, veterinary care for strays, and elder care.",
+            "The foundation has built 3 orphanages with educational facilities, established 5 Digital Centers in rural Zillas with 100+ computers, and distributed 500+ cycles, 1000+ uniforms, and 2000+ books to underprivileged students.",
         ],
     },
 ];
