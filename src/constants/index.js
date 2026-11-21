@@ -60,7 +60,7 @@ export const skills = [
     { name: "MediaPipe", type: "AI/ML", level: "Expert" },
     { name: "CNNs", type: "AI/ML", level: "Advanced" },
     { name: "LSTMs", type: "AI/ML", level: "Advanced" },
-    { name: "Reinforcement Learning (PPO/DQN)", type: "AI/ML", level: "Intermediate" },
+    { name: "Reinforcement Learning (PPO)", type: "AI/ML", level: "Intermediate" },
 
     // --- Backend and Systems: systems-level items under SDE & Systems ---
     { name: "C", type: "SDE", level: "Intermediate" },
@@ -133,7 +133,7 @@ export const experiences = [
         location: "Irvine, CA",
         icon: "🎓",
         iconBg: "#3B82F6",
-        date: "September 2025 – Present",
+        date: "September 2025 – December 2026",
         type: "education",
         points: [
             "GPA 3.88",
@@ -279,10 +279,10 @@ export const projects = [
     {
         name: 'Deep RL for Autonomous Racing (UCI)',
         problem: 'Mastering high-speed maneuvering and sharp turns in simulated autonomous driving.',
-        tech: ['PyTorch', 'Reinforcement Learning (PPO/DQN)', 'Custom Telemetry'],
+        tech: ['PyTorch', 'Reinforcement Learning (PPO)', 'Custom Telemetry'],
         impact: [
             'Developed a custom reward architecture that balanced speed with smooth steering',
-            'Best run completed a full lap; average lap progress rose from under 10% to about 36% over 200 training episodes',
+            'Completed 68 laps across 200 training episodes; lap success rose from 19% to 49% of episodes (first 100 vs. last 100).',
         ],
         githubLink: 'https://github.com/pysac17/aiProject',
         liveLink: '#',

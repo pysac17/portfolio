@@ -14,10 +14,14 @@ const About = () => {
     'July': 6, 'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11
   };
 
-  // Robust date parser with current date fallback (July 2026)
+  // "Now" is always the current month, so the timeline never needs a manual update
+  const today = new Date();
+  const currentMonthStart = new Date(today.getFullYear(), today.getMonth(), 1);
+
+  // Robust date parser with current date fallback
   const parseDateSafely = (dateString) => {
-    if (!dateString || dateString === 'Present') return new Date(2026, 6, 31); // Jul 2026
-    
+    if (!dateString || dateString === 'Present') return currentMonthStart;
+
     try {
       const trimmed = dateString.trim();
       
@@ -38,10 +42,10 @@ const About = () => {
       const fallbackDate = new Date(trimmed);
       if (!isNaN(fallbackDate.getTime())) return fallbackDate;
       
-      return new Date(2026, 6, 31);
+      return currentMonthStart;
     } catch (error) {
       console.warn('Date parsing error for:', dateString);
-      return new Date(2026, 6, 31);
+      return currentMonthStart;
     }
   };
 
@@ -57,42 +61,60 @@ const About = () => {
 
   const ROW_HEIGHT = 20;
   
-  // Process timeline data relative to Current Time (July 2026) -> Jan 2020
+  // Process timeline data: the right edge is the earliest entry, the left edge is
+  // "now" or the latest future end date (e.g. an expected graduation), whichever is later.
   const { chronoMapData, detailedCards } = useMemo(() => {
-    // Current Anchor: July 2026 = 0% (left), Jan 2020 = 100% (right)
-    const originDate = new Date(2026, 6, 31); // July 2026 ("now")
-    
-    // Total months between Jul 2026 and Jan 2020 = 79 months
-    const totalMonths = (2026 - 2020) * 12 + 7; // 72 + 7 = 79 months
-    const percentagePerMonth = 100 / totalMonths;
+    const monthIndex = (d) => d.getFullYear() * 12 + d.getMonth();
+    const currentIdx = monthIndex(currentMonthStart);
 
-    const processed = experiences.map((exp, index) => {
+    const parsed = experiences.map((exp) => {
       const dateParts = exp.date.includes('–') ? exp.date.split('–') : [exp.date];
       const dateStr1 = dateParts[0].trim();
       const dateStr2 = dateParts[1] ? dateParts[1].trim() : 'Present';
-      const isOngoing = dateStr2 === 'Present';
 
       const date1 = parseDateSafely(dateStr1);
-      const date2 = isOngoing ? originDate : parseDateSafely(dateStr2);
-      
+      const date2 = parseDateSafely(dateStr2);
+
+      // start = more recent date, end = older date (timeline reads right to left)
       const start = date1.getTime() > date2.getTime() ? date1 : date2;
       const end = date1.getTime() > date2.getTime() ? date2 : date1;
-      
-      const startYear = start.getFullYear();
-      const startMonth = start.getMonth();
-      const endYear = end.getFullYear();
-      const endMonth = end.getMonth();
-      
-      // Calculate months from origin (July 2026)
-      const startMonthsFromOrigin = (2026 - startYear) * 12 + (6 - startMonth);
-      const durationMonths = (startYear - endYear) * 12 + (startMonth - endMonth) + 1;
-      
-      // Reversed coordinates (0% = July 2026)
-      const leftPercent = Math.max(0, (startMonthsFromOrigin * percentagePerMonth)).toFixed(2) + '%';
-      const widthPercent = Math.min(100, (durationMonths * percentagePerMonth)).toFixed(2) + '%';
-      
+
+      // Ongoing if it says "Present" or the range covers the current month
+      const isOngoing = dateStr2 === 'Present' ||
+        (monthIndex(end) <= currentIdx && monthIndex(start) >= currentIdx);
+
+      return { exp, dateParts, dateStr1, dateStr2, start, end, isOngoing };
+    });
+
+    const originIdx = Math.max(currentIdx, ...parsed.map(p => monthIndex(p.start)));
+    const earliestYear = Math.min(...parsed.map(p => p.end.getFullYear()));
+    const earliestIdx = earliestYear * 12; // January of the earliest year
+    const originDate = new Date(Math.floor(originIdx / 12), originIdx % 12, 1);
+
+    const totalMonths = originIdx - earliestIdx + 1;
+    const percentagePerMonth = 100 / totalMonths;
+
+    // Year labels positioned on the same month scale as the bars
+    const yearMarkers = [];
+    for (let year = Math.floor(originIdx / 12); year >= earliestYear; year--) {
+      const segStart = Math.min(originIdx, year * 12 + 11);
+      const segEnd = year * 12;
+      yearMarkers.push({
+        year,
+        left: ((originIdx - segStart) * percentagePerMonth).toFixed(2) + '%',
+        width: ((segStart - segEnd + 1) * percentagePerMonth).toFixed(2) + '%',
+      });
+    }
+
+    const processed = parsed.map(({ exp, dateParts, dateStr1, dateStr2, start, end, isOngoing }, index) => {
+      const startIdx = monthIndex(start);
+      const endIdx = monthIndex(end);
+
+      const leftPercent = Math.max(0, (originIdx - startIdx) * percentagePerMonth).toFixed(2) + '%';
+      const widthPercent = Math.min(100, (startIdx - endIdx + 1) * percentagePerMonth).toFixed(2) + '%';
+
       const cardId = `experience-${index}`;
-      
+
       return {
         ...exp,
         cardId,
@@ -101,7 +123,7 @@ const About = () => {
         width: widthPercent,
         start,
         end,
-        formattedDateRange: dateParts[1] 
+        formattedDateRange: dateParts[1]
           ? `${formatDateForDisplay(dateStr1)} – ${formatDateForDisplay(dateStr2)}`
           : formatDateForDisplay(dateStr1)
       };
@@ -185,6 +207,7 @@ const About = () => {
         categories,
         totalMonths,
         originDate,
+        yearMarkers,
         laneLayout: { 
           eduTop, 
           workTop, 
@@ -408,31 +431,20 @@ const About = () => {
                 {/* Right Timeline Grid */}
                 <div className='ml-28 relative' style={{ width: 'calc(100% - 112px)' }}>
                   
-                  {/* Timeline Header starting from Present (2026) to 2020 */}
+                  {/* Timeline Header from the latest year (left) to the earliest (right) */}
                   <div className='relative h-6 border-b border-gray-300 mb-2'>
-                    {[
-                      { label: '2026', year: 2026 },
-                      { label: '2025', year: 2025 },
-                      { label: '2024', year: 2024 },
-                      { label: '2023', year: 2023 },
-                      { label: '2022', year: 2022 },
-                      { label: '2021', year: 2021 },
-                      { label: '2020', year: 2020 }
-                    ].map((item, index) => {
-                      const yearPercent = ((index / 7) * 100).toFixed(2) + '%';
-                      return (
-                        <div 
-                          key={item.year} 
-                          className='absolute text-xs font-bold text-gray-700 flex items-center justify-center border-r border-gray-200'
-                          style={{ 
-                            left: yearPercent,
-                            width: '14.2857%',
-                          }}
-                        >
-                          {item.label}
-                        </div>
-                      );
-                    })}
+                    {chronoMapData.yearMarkers.map((item) => (
+                      <div
+                        key={item.year}
+                        className='absolute text-xs font-bold text-gray-700 flex items-center justify-center border-r border-gray-200'
+                        style={{
+                          left: item.left,
+                          width: item.width,
+                        }}
+                      >
+                        {item.year}
+                      </div>
+                    ))}
                   </div>
                   
                   {/* Lanes Container */}
