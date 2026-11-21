@@ -1,10 +1,10 @@
 import React from 'react';
 
 const links = [
-  { name: 'Email', href: 'mailto:sachijs@uci.edu' },
+  { name: 'Gmail', href: 'mailto:sachijshah@gmail.com', title: 'sachijshah@gmail.com' },
+  { name: 'UCI Email', href: 'mailto:sachijs@uci.edu', title: 'sachijs@uci.edu' },
   { name: 'LinkedIn', href: 'https://www.linkedin.com/in/sachijshah/', external: true },
   { name: 'GitHub', href: 'https://github.com/pysac17', external: true },
-  // Placeholder: drop Sachi_Shah_Resume.pdf into /public for this link to work.
   { name: 'Resume', href: '/Sachi_Shah_Resume.pdf', download: true },
 ];
 
@@ -20,6 +20,7 @@ const Footer = () => (
           <a
             key={link.name}
             href={link.href}
+            title={link.title}
             {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
             {...(link.download && { download: true })}
             className='hover:text-slate-900 transition-colors duration-200'

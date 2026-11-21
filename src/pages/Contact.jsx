@@ -1,12 +1,15 @@
 import emailjs from "@emailjs/browser";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Suspense, useRef, useState, useEffect } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Suspense, useRef, useState, useEffect, useMemo } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import * as THREE from "three";
 
 import useAlert from "../hooks/useAlert";
 import Alert from "../components/Alert";
 import Loader from "../components/Loader";
+
+// Scene lights are positioned for the robot at this scale
+const ROBOT_SCALE = 3;
 
 // Interactive Robot Component
 const InteractiveRobot = ({ isTyping, ...props }) => {
@@ -54,9 +57,65 @@ const InteractiveRobot = ({ isTyping, ...props }) => {
     }
   });
 
+  // Measure the model once so it can be centered and the camera can frame it
+  const fit = useMemo(() => {
+    scene.updateMatrixWorld(true);
+    // Skinned meshes need their bone matrices before their bounds are correct
+    scene.traverse((obj) => {
+      if (obj.isSkinnedMesh) {
+        obj.skeleton.update();
+        obj.boundingBox = null;
+        obj.boundingSphere = null;
+      }
+    });
+    const box = new THREE.Box3().setFromObject(scene);
+    const center = box.getCenter(new THREE.Vector3());
+
+    // The robot spins around its vertical axis, so find the farthest any vertex
+    // reaches from that axis (tighter than the bounding-box corner)
+    const v = new THREE.Vector3();
+    let radius = 0;
+    scene.traverse((obj) => {
+      if (!obj.isMesh) return;
+      const pos = obj.geometry.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        obj.getVertexPosition(i, v).applyMatrix4(obj.matrixWorld);
+        radius = Math.max(radius, Math.hypot(v.x - center.x, v.z - center.z));
+      }
+    });
+
+    return {
+      center: center.multiplyScalar(ROBOT_SCALE),
+      halfHeight: ((box.max.y - box.min.y) / 2) * ROBOT_SCALE,
+      radiusXZ: radius * ROBOT_SCALE,
+    };
+  }, [scene]);
+
+  const { camera, size } = useThree();
+
+  // Move the camera back just enough that the spinning robot always fits
+  useEffect(() => {
+    const margin = 1.12;
+    const vFov = THREE.MathUtils.degToRad(camera.fov);
+    const hFov = 2 * Math.atan(Math.tan(vFov / 2) * (size.width / size.height));
+    const distForHeight = fit.halfHeight / Math.tan(vFov / 2) + fit.radiusXZ;
+    const distForWidth = fit.radiusXZ / Math.tan(hFov / 2) + fit.radiusXZ;
+    const distance = Math.max(distForHeight, distForWidth) * margin;
+
+    camera.position.set(0, 0, distance);
+    camera.near = distance / 100;
+    camera.far = distance * 10;
+    camera.lookAt(0, 0, 0);
+    camera.updateProjectionMatrix();
+  }, [camera, size.width, size.height, fit]);
+
   return (
     <group ref={robotRef} {...props}>
-      <primitive object={scene} scale={[3, 3, 3]} />
+      <primitive
+        object={scene}
+        scale={[ROBOT_SCALE, ROBOT_SCALE, ROBOT_SCALE]}
+        position={[-fit.center.x, -fit.center.y, -fit.center.z]}
+      />
     </group>
   );
 };
@@ -232,24 +291,32 @@ const Contact = () => {
           </button>
         </form>
 
-        <div className='mt-10 flex flex-wrap gap-x-6 gap-y-2 text-black-500 font-semibold'>
-          <a href='mailto:sachijs@uci.edu' className='hover:underline'>
-            Email: sachijs@uci.edu
-          </a>
-          <a href='https://www.linkedin.com/in/sachijshah/' target='_blank' rel='noopener noreferrer' className='hover:underline'>
-            LinkedIn
-          </a>
-          <a href='https://github.com/pysac17' target='_blank' rel='noopener noreferrer' className='hover:underline'>
-            GitHub
-          </a>
-          {/* Placeholder: drop Sachi_Shah_Resume.pdf into /public for this link to work. */}
-          <a href='/Sachi_Shah_Resume.pdf' download className='hover:underline'>
-            Resume (PDF)
-          </a>
+        <div className='mt-10'>
+          <p className='text-sm text-slate-500 mb-3'>Or reach me directly:</p>
+          <div className='flex flex-wrap gap-3'>
+            {[
+              { label: 'Gmail', href: 'mailto:sachijshah@gmail.com', title: 'sachijshah@gmail.com' },
+              { label: 'UCI Email', href: 'mailto:sachijs@uci.edu', title: 'sachijs@uci.edu' },
+              { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sachijshah/', external: true },
+              { label: 'GitHub', href: 'https://github.com/pysac17', external: true },
+              { label: 'Resume', href: '/Sachi_Shah_Resume.pdf', download: true },
+            ].map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                title={link.title}
+                {...(link.external && { target: '_blank', rel: 'noopener noreferrer' })}
+                {...(link.download && { download: true })}
+                className='px-4 py-2 rounded-lg bg-white border border-gray-200 shadow-card text-sm font-medium text-slate-700 hover:text-blue-600 hover:border-blue-300 transition-colors duration-200'
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className='lg:w-1/2 w-full lg:h-auto md:h-[650px] h-[350px]'>
+      <div className='lg:w-1/2 w-full lg:h-auto lg:min-h-[550px] md:h-[550px] h-[380px] mt-10 lg:mt-0'>
         <Canvas
           camera={{
             position: [0, 1, 20],
@@ -270,11 +337,7 @@ const Contact = () => {
           />
 
           <Suspense fallback={<Loader />}>
-            <InteractiveRobot
-              isTyping={isTyping}
-              position={[0, -5.5, 0]}
-              rotation={[0, 0, 0]}
-            />
+            <InteractiveRobot isTyping={isTyping} />
           </Suspense>
         </Canvas>
       </div>
